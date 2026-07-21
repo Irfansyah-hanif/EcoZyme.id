@@ -3,9 +3,10 @@ import { History, Award } from 'lucide-react';
 
 export default function Sejarah() {
   return (
-    <section id="sejarah" className="py-16 md:py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-gradient-to-br from-emerald-50/70 to-teal-50/40 rounded-3xl p-6 sm:p-8 md:p-14 border border-emerald-100/80 shadow-md relative overflow-hidden">
+    <section id="sejarah" className="w-full py-12 md:py-16 bg-white">
+      {/* Mengubah max-w-7xl menjadi w-full dengan padding yang responsif */}
+      <div className="w-full px-4 sm:px-8 md:px-12 lg:px-16">
+        <div className="w-full bg-gradient-to-br from-emerald-50/70 to-teal-50/40 rounded-3xl p-6 sm:p-10 md:p-14 border border-emerald-100/80 shadow-md relative overflow-hidden">
           <div className="absolute -top-10 -right-10 opacity-5 pointer-events-none">
             <History className="w-64 h-64 text-emerald-900" />
           </div>
@@ -25,14 +26,14 @@ export default function Sejarah() {
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-6 tracking-tight">Awal Mula Gerakan Peduli Sampah</h2>
               <div className="space-y-4 text-slate-600 leading-relaxed text-justify text-sm sm:text-base">
                 <p>
-                  Permasalahan sampah organik rumah tangga yang menumpuk sempat menjadi tantangan tersendiri bagi warga. Bau tak sedap dan lingkungan yang kurang asri mendorong sekelompok warga penggerak di <strong>RW 08 Kelurahan Kutowinangun Kidul, Tingkir, Kota Salatiga</strong> untuk mencari solusi cerdas yang berkelanjutan.
+                  Permasalahan sampah organik rumah tangga yang menumpuk sempat menjadi tantangan tersendiri bagi warga[cite: 1]. Bau tak sedap dan lingkungan yang kurang asri mendorong sekelompok warga penggerak di <strong>RW 08 Kelurahan Kutowinangun Kidul, Tingkir, Kota Salatiga</strong> untuk mencari solusi cerdas yang berkelanjutan[cite: 1].
                 </p>
                 <p>
-                  Berbekal kepedulian tinggi, RW 08 mulai menginisiasi pengolahan sampah dapur segar menjadi Eco-Enzyme. Apa yang awalnya berupa gerakan kecil para kader lingkungan, kini telah berkembang menjadi aksi komunal terstruktur dengan dibentuknya Satgas khusus.
+                  Berbekal kepedulian tinggi, RW 08 mulai menginisiasi pengolahan sampah dapur segar menjadi Eco-Enzyme[cite: 1]. Apa yang awalnya berupa gerakan kecil para kader lingkungan, kini telah berkembang menjadi aksi komunal terstruktur dengan dibentuknya Satgas khusus.
                 </p>
                 <div className="bg-white p-5 sm:p-6 rounded-2xl border-l-4 border-emerald-500 shadow-sm my-6">
                   <p className="text-emerald-800 font-semibold italic text-sm sm:text-base leading-relaxed">
-                    "RW 08 kini bukan hanya sekadar lingkungan tempat tinggal, melainkan telah menjadi pusat percontohan (role model). Keberhasilan produksi dan pemanfaatan Eco-Enzyme di RW ini diproyeksikan menjadi pemantik gerakan ramah lingkungan di seluruh Kelurahan Kutowinangun Kidul."
+                    "RW 08 kini bukan hanya sekadar lingkungan tempat tinggal, melainkan telah menjadi pusat percontohan (role model)[cite: 1]. Keberhasilan produksi dan pemanfaatan Eco-Enzyme di RW ini diproyeksikan menjadi pemantik gerakan ramah lingkungan di seluruh Kelurahan Kutowinangun Kidul[cite: 1]."
                   </p>
                 </div>
                 <p>

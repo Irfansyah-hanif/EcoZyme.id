@@ -2,14 +2,35 @@ import React from 'react';
 import { Sprout, ArrowRight, Leaf, Droplets, FlaskConical } from 'lucide-react';
 
 export default function Hero() {
-  return (
-    <section id="beranda" className="relative bg-gradient-to-br from-emerald-950 via-emerald-900 to-teal-950 text-white overflow-hidden">
-      <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-emerald-500 opacity-15 blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-teal-400 opacity-15 blur-3xl"></div>
+  // Fungsi handler untuk smooth scroll dengan memperhitungkan offset sticky header
+  const handleSmoothScroll = (e, targetId) => {
+    e.preventDefault();
+    const targetElement = document.querySelector(targetId);
+    
+    if (targetElement) {
+      const navOffset = 80; // Offset tinggi sticky navbar agar konten tidak tertutup
+      const elementPosition = targetElement.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navOffset;
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-28 flex flex-col md:flex-row items-center gap-12">
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  return (
+    <section id="hero" className="w-full relative bg-gradient-to-br from-emerald-950 via-emerald-900 to-teal-950 text-white overflow-hidden">
+      {/* Glow Ambient Decoration */}
+      <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-emerald-500 opacity-15 blur-3xl pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-teal-400 opacity-15 blur-3xl pointer-events-none"></div>
+
+      {/* Container Full-Width */}
+      <div className="w-full px-4 sm:px-8 md:px-12 lg:px-16 py-16 md:py-28 flex flex-col md:flex-row items-center gap-12">
+        
+        {/* Kolom Kiri: Teks & CTA */}
         <div className="w-full md:w-1/2 text-center md:text-left z-10">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-400/10 text-emerald-300 border border-emerald-400/20 mb-6">
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-emerald-400/10 text-emerald-300 border border-emerald-400/20 mb-6">
             <Sprout className="w-3.5 h-3.5" /> Pelopor Gerakan Eco-Enzyme Salatiga
           </span>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-black leading-tight mb-6 tracking-tight">
@@ -19,15 +40,24 @@ export default function Hero() {
             Platform edukasi interaktif untuk belajar membuat Eco-Enzyme secara presisi. Bersama mewujudkan Kelurahan Kutowinangun Kidul yang asri, bersih, dan berwawasan lingkungan.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-            <a href="#kalkulator" className="inline-flex justify-center items-center px-6 py-3.5 text-base font-bold rounded-full text-emerald-950 bg-gradient-to-r from-emerald-300 to-teal-200 hover:from-emerald-200 hover:to-teal-100 shadow-xl transition-all transform hover:-translate-y-0.5">
+            <a 
+              href="#kalkulator" 
+              onClick={(e) => handleSmoothScroll(e, '#kalkulator')}
+              className="inline-flex justify-center items-center px-6 py-3.5 text-base font-bold rounded-full text-emerald-950 bg-gradient-to-r from-emerald-300 to-teal-200 hover:from-emerald-200 hover:to-teal-100 shadow-xl transition-all transform hover:-translate-y-0.5 cursor-pointer select-none"
+            >
               Mulai Kalkulasi <ArrowRight className="ml-2 w-5 h-5" />
             </a>
-            <a href="#sejarah" className="inline-flex justify-center items-center px-6 py-3.5 border border-emerald-400/40 text-base font-semibold rounded-full text-white hover:bg-white/10 transition-all">
+            <a 
+              href="#sejarah" 
+              onClick={(e) => handleSmoothScroll(e, '#sejarah')}
+              className="inline-flex justify-center items-center px-6 py-3.5 border border-emerald-400/40 text-base font-semibold rounded-full text-white hover:bg-white/10 transition-all cursor-pointer select-none"
+            >
               Kisah Pelopor RW 8
             </a>
           </div>
         </div>
         
+        {/* Kolom Kanan: Card Visual Formula Emas */}
         <div className="w-full md:w-1/2 z-10 hidden md:block">
           <div className="relative w-full max-w-md mx-auto aspect-square rounded-3xl bg-emerald-800/20 border border-emerald-500/20 flex items-center justify-center p-8 shadow-2xl backdrop-blur-sm">
             <div className="absolute top-10 right-10 bg-white/95 p-4 rounded-2xl shadow-xl rotate-12 animate-pulse">
@@ -43,6 +73,7 @@ export default function Hero() {
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );

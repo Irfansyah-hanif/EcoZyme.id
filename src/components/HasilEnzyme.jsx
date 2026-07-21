@@ -99,12 +99,15 @@ export default function HasilEnzyme() {
   const IconComponent = currentData.icon;
 
   return (
-    <section id="pemanfaatan-hasil" className="py-16 md:py-20 bg-white border-t border-slate-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="pemanfaatan-hasil" className="w-full py-16 md:py-20 bg-white border-t border-slate-100">
+      {/* Mengubah max-w-7xl mx-auto menjadi w-full px-4 sm:px-8 md:px-12 lg:px-16 */}
+      <div className="w-full px-4 sm:px-8 md:px-12 lg:px-16">
         
         {/* Header Section */}
         <div className="text-center mb-12">
-          <span className="text-emerald-600 font-bold uppercase tracking-widest text-sm bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100">Pascapanen</span>
+          <span className="text-emerald-600 font-bold uppercase tracking-widest text-sm bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100">
+            Pascapanen
+          </span>
           <h2 className="text-3xl font-extrabold text-slate-900 mt-3">Panduan Pengolahan Hasil Panen</h2>
           <p className="mt-4 text-slate-600 max-w-2xl mx-auto text-sm sm:text-base">
             Eco-Enzyme murni hasil 90 hari fermentasi memiliki konsentrasi tinggi. Pilih opsi di bawah ini untuk melihat takaran pencampuran dan langkah aplikasi siap gunanya!
@@ -112,12 +115,13 @@ export default function HasilEnzyme() {
         </div>
 
         {/* Tab Buttons - Navigasi Pascapanen */}
-        <div className="flex flex-wrap gap-2 justify-center mb-10 max-w-4xl mx-auto">
+        <div className="flex flex-wrap gap-2 justify-center mb-10 w-full max-w-5xl mx-auto">
           {hasilEnzymeData.map((item) => {
             const TabIcon = item.icon;
             return (
               <button
                 key={item.id}
+                type="button"
                 onClick={() => setActiveTab(item.id)}
                 className={`flex items-center gap-2 px-4 py-3 rounded-2xl border text-sm font-bold transition-all shadow-sm cursor-pointer ${
                   activeTab === item.id
@@ -133,7 +137,7 @@ export default function HasilEnzyme() {
         </div>
 
         {/* Informasi Utama */}
-        <div className="max-w-4xl mx-auto bg-slate-50 rounded-3xl p-6 sm:p-8 md:p-10 border border-slate-200 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="w-full max-w-5xl mx-auto bg-slate-50 rounded-3xl p-6 sm:p-8 md:p-10 border border-slate-200 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Kolom Kiri: Judul, Rasio & Alat/Bahan */}
           <div className="lg:col-span-5 space-y-6">

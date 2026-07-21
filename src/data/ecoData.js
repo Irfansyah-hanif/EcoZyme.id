@@ -1,4 +1,3 @@
-import React from 'react';
 import { 
   Wrench, 
   Leaf, 
@@ -8,9 +7,8 @@ import {
   CalendarClock,
   Sprout,
   Sparkles,
-  ShieldAlert,
-  Paintbrush,
-  Bug
+  Bug,
+  Paintbrush
 } from 'lucide-react';
 
 export const stepsData = [
@@ -63,7 +61,7 @@ export const faqs = [
   },
   {
     question: "Bagaimana cara membedakan jamur baik dan jamur jahat?",
-    answer: "Jamur baik berwarna putih bersih, tipis seperti selaput (sering disebut Mamma Enzyme). Biarkan saja karena ini tanda sukses. Jamur jahat berwarna hitam, hijau pekat, atau abu-abu berbulu tebal. Jika ini muncul disertai bau busuk, segera lakukan penyelamatan dengan menambahkan gula merah seperti solusi bau busuk."
+    answer: "Jamur baik berwarna putih bersih, tipis seperti selaput (sering disebut Mamma Enzyme). Biarkan saja karena ini tanda sukses. Jamur jahat berwarna hitam, hijau pekat, atau abu-abu berbulu tebal. Jika ini muncul disertai bau busuk, segera lakukan penyelamatkan dengan menambahkan gula merah seperti solusi bau busuk."
   },
   {
     question: "Bolehkah saya mencampur sisa makanan berminyak atau dimasak?",
@@ -71,7 +69,6 @@ export const faqs = [
   }
 ];
 
-// Data Baru: Ragam Pengolahan Pasca-Panen Eco-Enzyme
 export const hasilEnzymeData = [
   {
     id: "tanaman",
