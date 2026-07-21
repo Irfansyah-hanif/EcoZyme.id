@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Leaf, Menu, X } from 'lucide-react';
+import { Menu, X, Download } from 'lucide-react';
 
 export default function Navbar({ isMenuOpen, setIsMenuOpen, onResetAll }) {
   const [localMenuOpen, setLocalMenuOpen] = useState(false);
@@ -9,7 +9,11 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen, onResetAll }) {
   const [activeMenu, setActiveMenu] = useState('#hero');
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // State transformasi GPU-accelerated untuk pergerakan garis yang sangat rapi
+  // ⚡ State PWA Install Prompt
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
+  const [isInstallable, setIsInstallable] = useState(false);
+
+  // State pergerakan garis indikator
   const [indicatorState, setIndicatorState] = useState({ x: 0, width: 0, opacity: 0 });
   
   const navContainerRef = useRef(null);
@@ -23,7 +27,40 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen, onResetAll }) {
     { name: 'Pengurus', id: '#struktur' },
   ];
 
-  // 💡 Kalkulasi posisi & lebar garis secara presisi
+  // 💡 Handler PWA Event Listener
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (e) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+      setIsInstallable(true);
+    };
+
+    const handleAppInstalled = () => {
+      setIsInstallable(false);
+      setDeferredPrompt(null);
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    window.addEventListener('appinstalled', handleAppInstalled);
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      window.removeEventListener('appinstalled', handleAppInstalled);
+    };
+  }, []);
+
+  // 💡 Trigger Install Prompt
+  const handleInstallClick = async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === 'accepted') {
+      setIsInstallable(false);
+    }
+    setDeferredPrompt(null);
+  };
+
+  // 💡 Kalkulasi posisi & lebar garis
   const updateIndicator = useCallback((activeId) => {
     const activeElement = itemRefs.current[activeId];
     const containerElement = navContainerRef.current;
@@ -40,12 +77,10 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen, onResetAll }) {
     }
   }, []);
 
-  // Update indikator saat menu aktif berubah
   useEffect(() => {
     updateIndicator(activeMenu);
   }, [activeMenu, updateIndicator]);
 
-  // Observer responsif saat ukuran layar atau elemen berubah
   useEffect(() => {
     const container = navContainerRef.current;
     if (!container) return;
@@ -58,7 +93,7 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen, onResetAll }) {
     return () => resizeObserver.disconnect();
   }, [activeMenu, updateIndicator]);
 
-  // 💡 Handler Smooth Scroll untuk tombol navigasi
+  // 💡 Handler Smooth Scroll
   const handleNavClick = (e, targetId) => {
     e.preventDefault();
     setActiveMenu(targetId);
@@ -77,7 +112,7 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen, onResetAll }) {
     }
   };
 
-  // 💡 Handler Logo (Scroll mulus ke paling atas)
+  // 💡 Handler Logo
   const handleLogoClick = (e) => {
     e.preventDefault();
     
@@ -95,7 +130,7 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen, onResetAll }) {
     toggleMenu(false);
   };
 
-  // 💡 Scrollspy presisi tanpa jitter
+  // 💡 Scrollspy
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -127,53 +162,97 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen, onResetAll }) {
       <div className="w-full px-4 sm:px-8 md:px-12 lg:px-16">
         <div className="flex justify-between items-center h-16">
           
-          {/* Logo & Brand */}
+          {/* Logo & Brand dengan SVG Presisi */}
           <a 
             href="#hero" 
             onClick={handleLogoClick}
-            className="flex items-center gap-2 group cursor-pointer select-none"
-            title="Kembali ke Beranda"
+            className="flex items-center gap-3 group cursor-pointer select-none"
+            title="EcoZyme.id - Beranda"
           >
-            <div className="bg-emerald-500 p-2 rounded-xl shadow-md shadow-emerald-200 group-hover:bg-emerald-600 transition-colors">
-              <Leaf className="w-6 h-6 text-white" />
+            {/* SVG Logo Container */}
+            <div className="w-10 h-10 shadow-sm rounded-xl overflow-hidden group-hover:scale-105 transition-transform duration-300 flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none" className="w-full h-full">
+                <defs>
+                  <linearGradient id="bgGradNav" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#059669" />
+                    <stop offset="100%" stopColor="#0D9488" />
+                  </linearGradient>
+
+                  <linearGradient id="accentGradNav" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#34D399" />
+                    <stop offset="100%" stopColor="#10B981" />
+                  </linearGradient>
+                </defs>
+
+                <rect width="512" height="512" rx="128" fill="url(#bgGradNav)"/>
+
+                <path d="M256 100C256 100 150 240 150 330C150 388.54 197.46 436 256 436C314.54 436 362 388.54 362 330C362 240 256 100 256 100Z" 
+                      fill="white" fillOpacity="0.12" 
+                      stroke="white" strokeWidth="20" strokeLinejoin="round"/>
+
+                <path d="M215 260C195 260 180 278 180 300C180 335 210 365 230 365C240 365 244 360 256 360C268 360 272 365 282 365C302 365 332 335 332 300C332 278 317 260 297 260C282 260 270 270 256 270C242 270 230 260 215 260Z" 
+                      fill="white"/>
+
+                <path d="M256 260C256 225 285 195 320 185C320 220 291 250 256 260Z" 
+                      fill="url(#accentGradNav)"/>
+              </svg>
             </div>
-            <span className="font-bold text-xl text-emerald-900 tracking-tight">
-              Eco<span className="text-emerald-500">Zyme</span>.id
-            </span>
+
+            {/* Nama Brand */}
+            <div className="flex flex-col justify-center">
+              <span className="font-extrabold text-xl text-slate-800 tracking-tight leading-none group-hover:text-emerald-600 transition-colors">
+                Eco<span className="text-emerald-600">Zyme</span><span className="text-teal-500 font-semibold text-sm">.id</span>
+              </span>
+              <span className="text-[9px] font-bold text-slate-400 tracking-wider uppercase mt-1">
+                Eco Enzyme Platform
+              </span>
+            </div>
           </a>
           
-          {/* Desktop Navigation */}
-          <div 
-            ref={navContainerRef} 
-            className="hidden md:flex space-x-6 lg:space-x-8 items-center relative py-2"
-          >
-            {menuItems.map((item) => (
-              <a 
-                key={item.id}
-                ref={(el) => (itemRefs.current[item.id] = el)}
-                href={item.id} 
-                onClick={(e) => handleNavClick(e, item.id)}
-                className={`font-semibold text-sm transition-colors duration-200 pb-1 cursor-pointer whitespace-nowrap select-none ${
-                  activeMenu === item.id 
-                    ? 'text-emerald-600 font-bold' 
-                    : 'text-slate-600 hover:text-emerald-600'
-                }`}
-              >
-                {item.name}
-              </a>
-            ))}
+          {/* Desktop Navigation & Install Button */}
+          <div className="hidden md:flex items-center gap-6">
+            <div 
+              ref={navContainerRef} 
+              className="flex space-x-6 lg:space-x-8 items-center relative py-2"
+            >
+              {menuItems.map((item) => (
+                <a 
+                  key={item.id}
+                  ref={(el) => (itemRefs.current[item.id] = el)}
+                  href={item.id} 
+                  onClick={(e) => handleNavClick(e, item.id)}
+                  className={`font-semibold text-sm transition-colors duration-200 pb-1 cursor-pointer whitespace-nowrap select-none ${
+                    activeMenu === item.id 
+                      ? 'text-emerald-600 font-bold' 
+                      : 'text-slate-600 hover:text-emerald-600'
+                  }`}
+                >
+                  {item.name}
+                </a>
+              ))}
 
-            {/* Garis Indikator Sliding Berkecepatan Tinggi & Mulus */}
-            <span 
-              className="absolute bottom-0 h-[2.5px] bg-emerald-500 rounded-full pointer-events-none"
-              style={{
-                width: `${indicatorState.width}px`,
-                transform: `translateX(${indicatorState.x}px)`,
-                opacity: indicatorState.opacity,
-                transition: 'transform 350ms cubic-bezier(0.4, 0, 0.2, 1), width 350ms cubic-bezier(0.4, 0, 0.2, 1), opacity 200ms ease',
-                willChange: 'transform, width',
-              }}
-            />
+              <span 
+                className="absolute bottom-0 h-[2.5px] bg-emerald-500 rounded-full pointer-events-none"
+                style={{
+                  width: `${indicatorState.width}px`,
+                  transform: `translateX(${indicatorState.x}px)`,
+                  opacity: indicatorState.opacity,
+                  transition: 'transform 350ms cubic-bezier(0.4, 0, 0.2, 1), width 350ms cubic-bezier(0.4, 0, 0.2, 1), opacity 200ms ease',
+                  willChange: 'transform, width',
+                }}
+              />
+            </div>
+
+            {/* Tombol Install App Desktop */}
+            {isInstallable && (
+              <button
+                onClick={handleInstallClick}
+                className="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold px-3.5 py-2 rounded-xl shadow-sm transition-all duration-200 active:scale-95 cursor-pointer"
+              >
+                <Download className="w-4 h-4" />
+                <span>Install Aplikasi</span>
+              </button>
+            )}
           </div>
 
           {/* Mobile Burger Button */}
@@ -192,7 +271,7 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen, onResetAll }) {
 
       {/* Mobile Navigation Dropdown */}
       {menuState && (
-        <div className="md:hidden bg-white border-t border-slate-100 px-4 sm:px-8 pt-2 pb-6 space-y-1 shadow-lg animate-fadeIn">
+        <div className="md:hidden bg-white border-t border-slate-100 px-4 sm:px-8 pt-2 pb-6 space-y-2 shadow-lg animate-fadeIn">
           {menuItems.map((item) => (
             <a 
               key={item.id}
@@ -207,6 +286,19 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen, onResetAll }) {
               {item.name}
             </a>
           ))}
+
+          {isInstallable && (
+            <button
+              onClick={() => {
+                handleInstallClick();
+                toggleMenu(false);
+              }}
+              className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-4 rounded-xl shadow-md transition-all active:scale-95 cursor-pointer mt-2"
+            >
+              <Download className="w-5 h-5" />
+              <span>Install Aplikasi EcoZyme</span>
+            </button>
+          )}
         </div>
       )}
     </nav>
