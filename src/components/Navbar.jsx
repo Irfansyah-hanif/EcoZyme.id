@@ -157,54 +157,66 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen, onResetAll }) {
 
   return (
     <nav className={`w-full sticky top-0 z-50 transition-all duration-300 bg-white/90 backdrop-blur-md border-b border-slate-100 ${
-      isScrolled ? 'shadow-md py-1 bg-white/95' : 'py-2'
+      isScrolled ? 'shadow-sm py-1.5 bg-white/95' : 'py-2.5'
     }`}>
       <div className="w-full px-4 sm:px-8 md:px-12 lg:px-16">
         <div className="flex justify-between items-center h-16">
           
-          {/* Logo & Brand dengan SVG Presisi */}
+          {/* Logo & Brand (Clean EcoEnzyme - Full Hijau) */}
           <a 
             href="#hero" 
             onClick={handleLogoClick}
-            className="flex items-center gap-3 group cursor-pointer select-none"
-            title="EcoZyme.id - Beranda"
+            className="flex items-center gap-3.5 group cursor-pointer select-none focus:outline-none"
+            title="EcoEnzyme - Beranda"
           >
             {/* SVG Logo Container */}
             <div className="w-10 h-10 shadow-sm rounded-xl overflow-hidden group-hover:scale-105 transition-transform duration-300 flex-shrink-0">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none" className="w-full h-full">
                 <defs>
+                  {/* Background Gradasi Minimalis & Modern (ID Unik Nav) */}
                   <linearGradient id="bgGradNav" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stopColor="#059669" />
                     <stop offset="100%" stopColor="#0D9488" />
                   </linearGradient>
 
+                  {/* Accent Color untuk Aksesori Organik (ID Unik Nav) */}
                   <linearGradient id="accentGradNav" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stopColor="#34D399" />
                     <stop offset="100%" stopColor="#10B981" />
                   </linearGradient>
                 </defs>
 
+                {/* Container Squircle / Rounded Square */}
                 <rect width="512" height="512" rx="128" fill="url(#bgGradNav)"/>
 
-                <path d="M256 100C256 100 150 240 150 330C150 388.54 197.46 436 256 436C314.54 436 362 388.54 362 330C362 240 256 100 256 100Z" 
-                      fill="white" fillOpacity="0.12" 
-                      stroke="white" strokeWidth="20" strokeLinejoin="round"/>
+                {/* Tetesan Air Utama */}
+                <path 
+                  d="M256 100C256 100 150 240 150 330C150 388.54 197.46 436 256 436C314.54 436 362 388.54 362 330C362 240 256 100 256 100Z" 
+                  fill="white" 
+                  fillOpacity="0.12" 
+                  stroke="white" 
+                  strokeWidth="20" 
+                  strokeLinejoin="round"
+                />
 
-                <path d="M215 260C195 260 180 278 180 300C180 335 210 365 230 365C240 365 244 360 256 360C268 360 272 365 282 365C302 365 332 335 332 300C332 278 317 260 297 260C282 260 270 270 256 270C242 270 230 260 215 260Z" 
-                      fill="white"/>
+                {/* Siluet Buah (Apel Minimalis) */}
+                <path 
+                  d="M215 260C195 260 180 278 180 300C180 335 210 365 230 365C240 365 244 360 256 360C268 360 272 365 282 365C302 365 332 335 332 300C332 278 317 260 297 260C282 260 270 270 256 270C242 270 230 260 215 260Z" 
+                  fill="white"
+                />
 
-                <path d="M256 260C256 225 285 195 320 185C320 220 291 250 256 260Z" 
-                      fill="url(#accentGradNav)"/>
+                {/* Daun Sayur Organik */}
+                <path 
+                  d="M256 260C256 225 285 195 320 185C320 220 291 250 256 260Z" 
+                  fill="url(#accentGradNav)"
+                />
               </svg>
             </div>
 
-            {/* Nama Brand */}
-            <div className="flex flex-col justify-center">
-              <span className="font-extrabold text-xl text-slate-800 tracking-tight leading-none group-hover:text-emerald-600 transition-colors">
-                Eco<span className="text-emerald-600">Zyme</span><span className="text-teal-500 font-semibold text-sm">.id</span>
-              </span>
-              <span className="text-[9px] font-bold text-slate-400 tracking-wider uppercase mt-1">
-                Eco Enzyme Platform
+            {/* Typography EcoEnzyme */}
+            <div className="flex items-center">
+              <span className="font-serif text-xl font-bold tracking-tight text-emerald-800 group-hover:text-emerald-600 transition-colors">
+                EcoEnzyme
               </span>
             </div>
           </a>
@@ -247,7 +259,7 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen, onResetAll }) {
             {isInstallable && (
               <button
                 onClick={handleInstallClick}
-                className="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold px-3.5 py-2 rounded-xl shadow-sm transition-all duration-200 active:scale-95 cursor-pointer"
+                className="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold px-3.5 py-2 rounded-xl shadow-xs transition-all duration-200 active:scale-95 cursor-pointer"
               >
                 <Download className="w-4 h-4" />
                 <span>Install Aplikasi</span>
@@ -303,4 +315,4 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen, onResetAll }) {
       )}
     </nav>
   );
-}
+} 
