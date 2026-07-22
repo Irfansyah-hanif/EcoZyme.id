@@ -2,8 +2,8 @@
   <defs>
     <!-- Background Gradasi Minimalis & Modern -->
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#059669" />
-      <stop offset="100%" stop-color="#0D9488" />
+      <stop offset="0%" stop-color="#059669" /> <!-- Emerald 600 -->
+      <stop offset="100%" stop-color="#0D9488" /> <!-- Teal 600 -->
     </linearGradient>
 
     <!-- Accent Color untuk Aksesori Organik -->
@@ -16,7 +16,7 @@
   <!-- Container Squircle / Rounded Square -->
   <rect width="512" height="512" rx="128" fill="url(#bgGrad)"/>
 
-  <!-- Tetesan Air Utama -->
+  <!-- Tetesan Air Utama (Garis Putih Minimalis) -->
   <path d="M256 100C256 100 150 240 150 330C150 388.54 197.46 436 256 436C314.54 436 362 388.54 362 330C362 240 256 100 256 100Z" 
         fill="white" fill-opacity="0.12" 
         stroke="white" stroke-width="20" stroke-linejoin="round"/>
@@ -25,7 +25,7 @@
   <path d="M215 260C195 260 180 278 180 300C180 335 210 365 230 365C240 365 244 360 256 360C268 360 272 365 282 365C302 365 332 335 332 300C332 278 317 260 297 260C282 260 270 270 256 270C242 270 230 260 215 260Z" 
         fill="white"/>
 
-  <!-- Daun Sayur Organik -->
+  <!-- Daun Sayur Organik di Atas Buah (Modern Cutout) -->
   <path d="M256 260C256 225 285 195 320 185C320 220 291 250 256 260Z" 
         fill="url(#accentGrad)"/>
 </svg>

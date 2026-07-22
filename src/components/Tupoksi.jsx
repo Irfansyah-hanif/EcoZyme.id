@@ -4,7 +4,6 @@ import { Wrench, Recycle, Users, Shield, User } from 'lucide-react';
 export default function Tupoksi({ activeTupoksi = 'ketua', setActiveTupoksi }) {
   return (
     <section id="struktur" className="w-full py-16 bg-slate-50 border-t border-slate-100">
-      {/* Mengubah max-w-7xl mx-auto menjadi w-full px-4 sm:px-8 md:px-12 lg:px-16 */}
       <div className="w-full px-4 sm:px-8 md:px-12 lg:px-16">
         
         {/* Header Section */}
@@ -26,7 +25,8 @@ export default function Tupoksi({ activeTupoksi = 'ketua', setActiveTupoksi }) {
             {/* Level 1: Pembina */}
             <div className="relative flex flex-col items-center w-full">
               <button
-                onClick={() => setActiveTupoksi && setActiveTupoksi('pembina')}
+                type="button"
+                onClick={() => setActiveTupoksi('pembina')}
                 className={`w-full max-w-xs bg-white rounded-2xl shadow-sm border p-4 text-center transition-all hover:scale-102 cursor-pointer ${
                   activeTupoksi === 'pembina'
                     ? 'border-emerald-500 ring-2 ring-emerald-500/20 shadow-md'
@@ -40,14 +40,14 @@ export default function Tupoksi({ activeTupoksi = 'ketua', setActiveTupoksi }) {
                 <p className="text-emerald-700 font-extrabold text-lg">Ketua RW 08</p>
               </button>
               
-              {/* Vertical connector line */}
               <div className="h-8 w-0.5 bg-slate-300"></div>
             </div>
 
             {/* Level 2: Ketua */}
             <div className="relative flex flex-col items-center w-full">
               <button
-                onClick={() => setActiveTupoksi && setActiveTupoksi('ketua')}
+                type="button"
+                onClick={() => setActiveTupoksi('ketua')}
                 className={`w-full max-w-sm bg-gradient-to-r rounded-2xl shadow-md p-4 text-center transition-all hover:scale-102 cursor-pointer ${
                   activeTupoksi === 'ketua'
                     ? 'from-emerald-700 to-teal-700 text-white ring-4 ring-emerald-500/20 border-4 border-emerald-50'
@@ -61,7 +61,6 @@ export default function Tupoksi({ activeTupoksi = 'ketua', setActiveTupoksi }) {
                 <h3 className="font-black text-lg tracking-wide">Ketua Satgas Eco-Enzyme</h3>
               </button>
 
-              {/* Vertical connector line */}
               <div className="h-8 w-0.5 bg-slate-300"></div>
             </div>
 
@@ -80,7 +79,8 @@ export default function Tupoksi({ activeTupoksi = 'ketua', setActiveTupoksi }) {
               <div className="flex flex-col items-center">
                 <div className="md:hidden h-4 w-0.5 bg-slate-300"></div>
                 <button 
-                  onClick={() => setActiveTupoksi && setActiveTupoksi('sarpras')}
+                  type="button"
+                  onClick={() => setActiveTupoksi('sarpras')}
                   className={`w-full rounded-2xl p-5 border text-center transition-all hover:scale-102 cursor-pointer ${
                     activeTupoksi === 'sarpras' 
                       ? 'bg-emerald-50 border-emerald-400 shadow-md ring-2 ring-emerald-500/20' 
@@ -101,7 +101,8 @@ export default function Tupoksi({ activeTupoksi = 'ketua', setActiveTupoksi }) {
               <div className="flex flex-col items-center">
                 <div className="md:hidden h-4 w-0.5 bg-slate-300"></div>
                 <button 
-                  onClick={() => setActiveTupoksi && setActiveTupoksi('produksi')}
+                  type="button"
+                  onClick={() => setActiveTupoksi('produksi')}
                   className={`w-full rounded-2xl p-5 border text-center transition-all hover:scale-102 cursor-pointer ${
                     activeTupoksi === 'produksi' 
                       ? 'bg-teal-50 border-teal-400 shadow-md ring-2 ring-teal-500/20' 
@@ -122,7 +123,8 @@ export default function Tupoksi({ activeTupoksi = 'ketua', setActiveTupoksi }) {
               <div className="flex flex-col items-center">
                 <div className="md:hidden h-4 w-0.5 bg-slate-300"></div>
                 <button 
-                  onClick={() => setActiveTupoksi && setActiveTupoksi('humas')}
+                  type="button"
+                  onClick={() => setActiveTupoksi('humas')}
                   className={`w-full rounded-2xl p-5 border text-center transition-all hover:scale-102 cursor-pointer ${
                     activeTupoksi === 'humas' 
                       ? 'bg-blue-50 border-blue-400 shadow-md ring-2 ring-blue-500/20' 
@@ -150,10 +152,10 @@ export default function Tupoksi({ activeTupoksi = 'ketua', setActiveTupoksi }) {
               <span className="inline-block bg-emerald-100 text-emerald-800 font-bold text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wider mb-3">Tupoksi Utama</span>
               <h4 className="text-lg sm:text-xl font-bold text-slate-800 mb-3">Ketua Satgas Eco-Enzyme</h4>
               <ul className="text-slate-600 list-disc list-inside space-y-2 text-xs sm:text-sm leading-relaxed">
-                <li>Memimpin, mengawasi, dan mengkoordinasikan semua rangkaian program pembuatan Eco-Enzyme di tingkat RW[cite: 1].</li>
+                <li>Memimpin, mengawasi, dan mengkoordinasikan semua rangkaian program pembuatan Eco-Enzyme di tingkat RW.</li>
                 <li>Merumuskan program sosialisasi, jadwal kerja, serta mengevaluasi kendala teknis dari tiap-tiap divisi.</li>
                 <li>Memberikan pertimbangan krusial apabila terdapat kendala dalam kualitas hasil fermentasi.</li>
-                <li>Melaporkan berkala capaian hasil produksi dan pemanfaatan panen kepada Ketua RW 08[cite: 1].</li>
+                <li>Melaporkan berkala capaian hasil produksi dan pemanfaatan panen kepada Ketua RW 08.</li>
               </ul>
             </div>
           )}
@@ -163,9 +165,9 @@ export default function Tupoksi({ activeTupoksi = 'ketua', setActiveTupoksi }) {
               <span className="inline-block bg-emerald-100 text-emerald-800 font-bold text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wider mb-3">Tupoksi Utama</span>
               <h4 className="text-lg sm:text-xl font-bold text-slate-800 mb-3">Pembina Satgas (Ketua RW 08)</h4>
               <ul className="text-slate-600 list-disc list-inside space-y-2 text-xs sm:text-sm leading-relaxed">
-                <li>Mengawasi seluruh rancangan kebijakan strategis satgas di lingkungan kelurahan[cite: 1].</li>
+                <li>Mengawasi seluruh rancangan kebijakan strategis satgas di lingkungan kelurahan.</li>
                 <li>Memberikan arahan langsung terkait pengadaan sarana dan prasarana berskala besar.</li>
-                <li>Menjadi jembatan koordinasi struktural antara Satgas tingkat RW dengan aparatur Kelurahan[cite: 1].</li>
+                <li>Menjadi jembatan koordinasi struktural antara Satgas tingkat RW dengan aparatur Kelurahan.</li>
                 <li>Mengevaluasi laporan capaian panen dan distribusi berkala satgas.</li>
               </ul>
             </div>
@@ -178,7 +180,7 @@ export default function Tupoksi({ activeTupoksi = 'ketua', setActiveTupoksi }) {
               <ul className="text-slate-600 list-disc list-inside space-y-2 text-xs sm:text-sm leading-relaxed">
                 <li>Menyediakan, merawat, dan mencatat ketersediaan wadah fermentasi (ember/tong plastik).</li>
                 <li>Mengkoordinir penyediaan bahan pendukung seperti gula merah tebu/molase dan air bersih berkualitas tinggi.</li>
-                <li>Mengatur titik lokasi pengumpulan sisa sampah kulit buah segar atau sayuran yang disumbangkan oleh warga[cite: 1].</li>
+                <li>Mengatur titik lokasi pengumpulan sisa sampah kulit buah segar atau sayuran yang disumbangkan oleh warga.</li>
                 <li>Memelihara kesiapan alat ukur penting (timbangan digital, gelas ukur, dan alat penyaring).</li>
               </ul>
             </div>
@@ -191,7 +193,7 @@ export default function Tupoksi({ activeTupoksi = 'ketua', setActiveTupoksi }) {
               <ul className="text-slate-600 list-disc list-inside space-y-2 text-xs sm:text-sm leading-relaxed">
                 <li>Mengatur serta memandu proses pencampuran bahan baku dengan rasio baku 1:3:10.</li>
                 <li>Membuat kalender pemantauan harian, utamanya kontrol pembuangan gas (burping) pada bulan pertama.</li>
-                <li>Menjadi instruktur demo pembuatan Eco-Enzyme dalam pertemuan-pertemuan warga maupun PKK[cite: 1].</li>
+                <li>Menjadi instruktur demo pembuatan Eco-Enzyme dalam pertemuan-pertemuan warga maupun PKK.</li>
                 <li>Menilai kematangan fisik eco-enzyme pada masa akhir fermentasi 90 hari sebelum penyaringan.</li>
               </ul>
             </div>
@@ -202,10 +204,10 @@ export default function Tupoksi({ activeTupoksi = 'ketua', setActiveTupoksi }) {
               <span className="inline-block bg-blue-100 text-blue-800 font-bold text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wider mb-3">Tupoksi Divisi</span>
               <h4 className="text-lg sm:text-xl font-bold text-slate-800 mb-3">Divisi Humas & Kemitraan</h4>
               <ul className="text-slate-600 list-disc list-inside space-y-2 text-xs sm:text-sm leading-relaxed">
-                <li>Menyosialisasikan sejuta manfaat dari cairan Eco-Enzyme kepada seluruh warga RW 08[cite: 1].</li>
-                <li>Menjembatani kerja sama dengan instansi luar seperti Kelurahan, Dinas Lingkungan Hidup (DLH), maupun sekolah sekitar[cite: 1].</li>
+                <li>Menyosialisasikan sejuta manfaat dari cairan Eco-Enzyme kepada seluruh warga RW 08.</li>
+                <li>Menjembatani kerja sama dengan instansi luar seperti Kelurahan, Dinas Lingkungan Hidup (DLH), maupun sekolah sekitar.</li>
                 <li>Mendistribusikan hasil panen untuk kemaslahatan warga (disinfektan lingkungan, penjernih air selokan, maupun pupuk tanaman warga).</li>
-                <li>Mempromosikan pencapaian ramah lingkungan RW 08 Kutowinangun Kidul di media sosial[cite: 1].</li>
+                <li>Mempromosikan pencapaian ramah lingkungan RW 08 Kutowinangun Kidul di media sosial.</li>
               </ul>
             </div>
           )}

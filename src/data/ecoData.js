@@ -5,6 +5,7 @@ import {
   FlaskConical, 
   CheckCircle2, 
   CalendarClock,
+  Video,
   Sprout,
   Sparkles,
   Bug,
@@ -47,6 +48,15 @@ export const stepsData = [
     icon: CalendarClock,
     desc: "Tuliskan tanggal pembuatan, masa wajib buang gas (30 hari pertama), dan tanggal perkiraan panen (90 hari) pada kertas label lalu tempelkan pada wadah.",
     proTip: "Simpan wadah di sudut rumah yang teduh, sejuk, berventilasi baik, terhindar dari panas matahari langsung, serta jauh dari tumpukan sampah basah maupun saluran got."
+  },
+  {
+    title: "Video Panduan Tutorial",
+    icon: Video,
+    isVideo: true,
+    // ID video YouTube aktif (Tutorial Pembuatan Eco-Enzyme)
+    videoUrl: "https://www.youtube-nocookie.com/embed/3zAoGn2T4WY",
+    desc: "Simak video demonstrasi pembuatan Eco-Enzyme secara langsung dan visual untuk mempermudah praktik kamu di rumah.",
+    proTip: "Pastikan rasio bahan baku 1 (gula) : 3 (sampah organik) : 10 (air) diterapkan dengan presisi tinggi saat mengikuti tutorial video."
   }
 ];
 

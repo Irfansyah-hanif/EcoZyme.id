@@ -22,6 +22,9 @@ const ComponentLoader = () => (
 export default function App() {
   const [activeStep, setActiveStep] = useState(0);
   const [calcResult, setCalcResult] = useState(null);
+  
+  // ⚡ State terpusat untuk Tupoksi Satgas (Default: 'ketua')
+  const [activeTupoksi, setActiveTupoksi] = useState('ketua');
 
   const handleCalculate = useCallback((data) => {
     setCalcResult(data);
@@ -66,9 +69,12 @@ export default function App() {
             <Timeline />
           </section>
 
-          {/* Dpindahkan ke posisi ini (Sebelum Troubleshooting) */}
+          {/* ⚡ Oper Props activeTupoksi dan setActiveTupoksi di sini */}
           <section id="struktur" className="w-full">
-            <Tupoksi />
+            <Tupoksi 
+              activeTupoksi={activeTupoksi} 
+              setActiveTupoksi={setActiveTupoksi} 
+            />
           </section>
 
           <section id="troubleshooting" className="w-full">

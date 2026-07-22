@@ -12,26 +12,31 @@ export default function Steps({ activeStep = 0, setActiveStep }) {
   return (
     <section id="cara-pembuatan" className="py-16 md:py-20 bg-white border-t border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Header Section */}
         <div className="text-center mb-12">
           <span className="text-emerald-600 font-bold uppercase tracking-widest text-sm bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100">
             Langkah Praktis
           </span>
           <h2 className="text-3xl font-extrabold text-slate-900 mt-3">Panduan Langkah Pembuatan</h2>
           <p className="mt-4 text-slate-600 max-w-2xl mx-auto text-sm sm:text-base">
-            Ikuti 6 langkah standar di bawah ini. Klik setiap langkah untuk menampilkan <strong>Tips Rahasia Anti-Gagal</strong>.
+            Ikuti langkah praktis di bawah ini. Klik setiap langkah untuk melihat instruksi detail, video panduan, & <strong>Tips Rahasia Anti-Gagal</strong>.
           </p>
         </div>
 
+        {/* Interactive Step Guide Grid */}
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
-          {/* Daftar Langkah Navigasi */}
+          
+          {/* Navigasi Sebelah Kiri (Poin 1 - 7) */}
           <div className="lg:col-span-5 space-y-2.5">
             {stepsData.map((step, index) => {
               const IconComponent = step.icon;
               return (
                 <button
                   key={index}
+                  type="button"
                   onClick={() => setActiveStep && setActiveStep(index)}
-                  className={`w-full text-left p-3.5 sm:p-4 rounded-2xl border transition-all duration-300 flex items-center gap-4 ${
+                  className={`w-full text-left p-3.5 sm:p-4 rounded-2xl border transition-all duration-300 flex items-center gap-4 cursor-pointer ${
                     safeIndex === index
                       ? 'bg-emerald-600 border-emerald-600 text-white shadow-xl translate-x-1'
                       : 'bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-700'
@@ -55,9 +60,10 @@ export default function Steps({ activeStep = 0, setActiveStep }) {
             })}
           </div>
 
-          {/* Rincian Detail Langkah */}
-          <div className="lg:col-span-7 bg-slate-50 border border-slate-200 rounded-3xl p-5 sm:p-6 md:p-8 shadow-sm min-h-[340px] flex flex-col justify-between">
+          {/* Panel Detail Sebelah Kanan */}
+          <div className="lg:col-span-7 bg-slate-50 border border-slate-200 rounded-3xl p-5 sm:p-6 md:p-8 shadow-sm min-h-[380px] flex flex-col justify-between">
             <div>
+              {/* Header Progress Bar */}
               <div className="flex items-center gap-3 mb-6">
                 <span className="text-[10px] font-black bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full uppercase tracking-wider">
                   Langkah {safeIndex + 1} dari {stepsData.length}
@@ -70,15 +76,33 @@ export default function Steps({ activeStep = 0, setActiveStep }) {
                 </div>
               </div>
 
+              {/* Judul Langkah */}
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 mb-4 flex items-center gap-2">
                 <ListTodo className="w-5 h-5 sm:w-6 h-6 text-emerald-600" />
                 {currentStep.title}
               </h3>
+
+              {/* Deskripsi Teks */}
               <p className="text-slate-700 text-sm sm:text-base md:text-lg leading-relaxed mb-6">
                 {currentStep.desc}
               </p>
+
+              {/* JIKA LANGKAH INI ADALAH VIDEO (POIN 7) */}
+              {currentStep.isVideo && currentStep.videoUrl && (
+                <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-md border border-slate-300 bg-black mb-6">
+                  <iframe
+                    className="absolute top-0 left-0 w-full h-full"
+                    src={currentStep.videoUrl}
+                    title={currentStep.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  />
+                </div>
+              )}
             </div>
 
+            {/* Kotak Tips Pro Anti-Gagal */}
             <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 sm:p-5 relative overflow-hidden">
               <div className="flex items-start gap-3">
                 <div className="bg-amber-100 p-1.5 sm:p-2 rounded-xl text-amber-700 flex-shrink-0">
@@ -94,8 +118,11 @@ export default function Steps({ activeStep = 0, setActiveStep }) {
                 </div>
               </div>
             </div>
+
           </div>
+
         </div>
+
       </div>
     </section>
   );
