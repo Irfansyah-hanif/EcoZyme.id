@@ -16,18 +16,18 @@ export default function Steps({ activeStep = 0, setActiveStep }) {
         {/* Header Section */}
         <div className="text-center mb-12">
           <span className="text-emerald-600 font-bold uppercase tracking-widest text-sm bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100">
-            Langkah Praktis
+            SOP 6P to Eco-Enzyme
           </span>
           <h2 className="text-3xl font-extrabold text-slate-900 mt-3">Panduan Langkah Pembuatan</h2>
           <p className="mt-4 text-slate-600 max-w-2xl mx-auto text-sm sm:text-base">
-            Ikuti langkah praktis di bawah ini. Klik setiap langkah untuk melihat instruksi detail, video panduan, & <strong>Tips Rahasia Anti-Gagal</strong>.
+            SOP 6P: <em>Turn Waste into Worth</em>. Klik setiap langkah untuk membaca petunjuk lengkap & <strong>Tips Anti Gagal</strong>.
           </p>
         </div>
 
         {/* Interactive Step Guide Grid */}
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
           
-          {/* Navigasi Sebelah Kiri (Poin 1 - 7) */}
+          {/* Navigasi Sebelah Kiri */}
           <div className="lg:col-span-5 space-y-2.5">
             {stepsData.map((step, index) => {
               const IconComponent = step.icon;
@@ -82,12 +82,24 @@ export default function Steps({ activeStep = 0, setActiveStep }) {
                 {currentStep.title}
               </h3>
 
-              {/* Deskripsi Teks */}
-              <p className="text-slate-700 text-sm sm:text-base md:text-lg leading-relaxed mb-6">
-                {currentStep.desc}
-              </p>
+              {/* Tampilan List Items (Bullet Points) jika properti items tersedia */}
+              {currentStep.items ? (
+                <ul className="space-y-2 mb-6 text-slate-700 text-xs sm:text-sm md:text-base leading-relaxed">
+                  {currentStep.items.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0 mt-2"></span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                /* Deskripsi Paragraf Teks Biasa */
+                <p className="text-slate-700 text-sm sm:text-base md:text-lg leading-relaxed mb-6">
+                  {currentStep.desc}
+                </p>
+              )}
 
-              {/* JIKA LANGKAH INI ADALAH VIDEO (POIN 7) */}
+              {/* JIKA LANGKAH INI ADALAH VIDEO (POIN 8) */}
               {currentStep.isVideo && currentStep.videoUrl && (
                 <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-md border border-slate-300 bg-black mb-6">
                   <iframe
@@ -102,7 +114,7 @@ export default function Steps({ activeStep = 0, setActiveStep }) {
               )}
             </div>
 
-            {/* Kotak Tips Pro Anti-Gagal */}
+            {/* Kotak Tips Anti Gagal */}
             <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 sm:p-5 relative overflow-hidden">
               <div className="flex items-start gap-3">
                 <div className="bg-amber-100 p-1.5 sm:p-2 rounded-xl text-amber-700 flex-shrink-0">
@@ -110,7 +122,7 @@ export default function Steps({ activeStep = 0, setActiveStep }) {
                 </div>
                 <div>
                   <h4 className="font-extrabold text-amber-900 text-xs sm:text-sm uppercase tracking-wider mb-1">
-                    Tips Pro Anti-Gagal:
+                    Tips Anti Gagal:
                   </h4>
                   <p className="text-amber-950 text-xs sm:text-sm font-medium leading-relaxed">
                     {currentStep.proTip}

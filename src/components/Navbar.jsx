@@ -375,4 +375,4 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen, onResetAll }) {
       )}
     </nav>
   );
-}
+} 

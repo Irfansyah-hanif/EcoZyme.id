@@ -1,216 +1,360 @@
-import React from 'react';
-import { Wrench, Recycle, Users, Shield, User } from 'lucide-react';
+import React, { useState } from 'react';
+import { 
+  Users, 
+  CheckCircle2, 
+  ShieldCheck, 
+  Briefcase, 
+  FileText, 
+  Target, 
+  Award, 
+  Layers,
+  Shield,
+  User,
+  Wrench,
+  Recycle,
+  FileSpreadsheet,
+  Wallet
+} from 'lucide-react';
+import { satgasHeader, satgasData } from '../data/satgasData';
 
-export default function Tupoksi({ activeTupoksi = 'ketua', setActiveTupoksi }) {
+export default function Tupoksi({ activeTupoksi, setActiveTupoksi }) {
+  const [localActive, setLocalActive] = useState('ketua');
+  const currentKey = activeTupoksi !== undefined ? activeTupoksi : localActive;
+  const setTab = setActiveTupoksi || setLocalActive;
+
+  const currentSatgas = satgasData.find(item => item.id === currentKey) || satgasData[1];
+
   return (
     <section id="struktur" className="w-full py-16 bg-slate-50 border-t border-slate-100">
       <div className="w-full px-4 sm:px-8 md:px-12 lg:px-16">
         
         {/* Header Section */}
-        <div className="text-center mb-16">
-          <span className="text-emerald-600 font-bold uppercase tracking-widest text-sm bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100">
-            Kolaborasi Komunitas
+        <div className="text-center mb-12">
+          <span className="text-emerald-600 font-bold uppercase tracking-widest text-xs sm:text-sm bg-emerald-50 px-3.5 py-1.5 rounded-full border border-emerald-200 shadow-xs inline-block mb-3">
+            {satgasHeader.summaryTitle}
           </span>
-          <h2 className="text-3xl font-extrabold text-slate-900 mt-3">Satgas Eco-Enzyme</h2>
-          <p className="mt-4 text-slate-600 max-w-2xl mx-auto text-sm sm:text-base font-medium">
-            Struktur Kepengurusan Satuan Tugas di setiap RW<br />
-            Kelurahan Kutowinangun Kidul, Tingkir, Kota Salatiga
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 uppercase tracking-tight max-w-4xl mx-auto leading-tight">
+            {satgasHeader.title}
+          </h2>
+          <p className="mt-2 text-sm sm:text-base font-semibold text-emerald-700 max-w-3xl mx-auto">
+            {satgasHeader.subtitle}
           </p>
         </div>
 
-        {/* Interactive Org Chart Tree */}
-        <div className="w-full max-w-5xl mx-auto mb-12">
+        {/* 🌳 BAGAN STRUKTUR ORGANISASI VISUAL */}
+        <div className="w-full max-w-5xl mx-auto mb-16 bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm">
+          <h3 className="text-center text-xs font-black text-slate-400 uppercase tracking-widest mb-8">
+            Bagan Struktur Organisasi Satgas
+          </h3>
+
           <div className="flex flex-col items-center">
             
-            {/* Level 1: Pembina */}
-            <div className="relative flex flex-col items-center w-full">
+            {/* Level 1: PEMBINA */}
+            <div className="flex flex-col items-center w-full">
               <button
                 type="button"
-                onClick={() => setActiveTupoksi('pembina')}
-                className={`w-full max-w-xs bg-white rounded-2xl shadow-sm border p-4 text-center transition-all hover:scale-102 cursor-pointer ${
-                  activeTupoksi === 'pembina'
-                    ? 'border-emerald-500 ring-2 ring-emerald-500/20 shadow-md'
-                    : 'border-slate-200 hover:border-emerald-300'
+                onClick={() => setTab('pembina')}
+                className={`w-64 bg-white rounded-2xl border-2 p-4 text-center transition-all hover:scale-102 cursor-pointer shadow-xs ${
+                  currentKey === 'pembina'
+                    ? 'border-emerald-600 ring-4 ring-emerald-500/20 bg-emerald-50/30'
+                    : 'border-slate-800 hover:border-emerald-500'
                 }`}
               >
-                <div className="flex items-center justify-center gap-2 mb-1">
-                  <Shield className={`w-4 h-4 ${activeTupoksi === 'pembina' ? 'text-emerald-600' : 'text-slate-400'}`} />
-                  <h3 className="font-bold text-slate-400 text-xs uppercase tracking-wider">Pembina</h3>
-                </div>
-                <p className="text-emerald-700 font-extrabold text-lg">Ketua RW 08</p>
+                <h4 className="font-extrabold text-slate-900 text-sm tracking-wide">PEMBINA</h4>
+                <p className="text-xs text-slate-600 mt-0.5">Ketua RW</p>
               </button>
               
-              <div className="h-8 w-0.5 bg-slate-300"></div>
+              {/* Garis Panah Bawah */}
+              <div className="h-8 w-0.5 bg-slate-800 relative">
+                <div className="absolute -bottom-1 -left-1.25 border-t-[6px] border-t-slate-800 border-x-[5px] border-x-transparent"></div>
+              </div>
             </div>
 
-            {/* Level 2: Ketua */}
-            <div className="relative flex flex-col items-center w-full">
+            {/* Level 2: KETUA SATGAS + SEKRETARIS & BENDAHARA */}
+            <div className="flex items-center justify-center gap-3 sm:gap-6 w-full my-1">
+              
+              {/* SEKRETARIS (Kiri) */}
               <button
                 type="button"
-                onClick={() => setActiveTupoksi('ketua')}
-                className={`w-full max-w-sm bg-gradient-to-r rounded-2xl shadow-md p-4 text-center transition-all hover:scale-102 cursor-pointer ${
-                  activeTupoksi === 'ketua'
-                    ? 'from-emerald-700 to-teal-700 text-white ring-4 ring-emerald-500/20 border-4 border-emerald-50'
-                    : 'from-emerald-600 to-teal-600 text-white border-2 border-transparent'
+                onClick={() => setTab('sekretaris')}
+                className={`w-36 sm:w-44 bg-white rounded-2xl border-2 p-3.5 text-center transition-all hover:scale-102 cursor-pointer shadow-xs ${
+                  currentKey === 'sekretaris'
+                    ? 'border-emerald-600 ring-4 ring-emerald-500/20 bg-emerald-50/30'
+                    : 'border-slate-800 hover:border-emerald-500'
                 }`}
               >
-                <div className="flex items-center justify-center gap-2 mb-1">
-                  <User className="w-4 h-4 text-emerald-200" />
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-100">Pimpinan Utama</span>
-                </div>
-                <h3 className="font-black text-lg tracking-wide">Ketua Satgas Eco-Enzyme</h3>
+                <h4 className="font-extrabold text-slate-900 text-xs sm:text-sm tracking-wide">SEKRETARIS</h4>
               </button>
 
-              <div className="h-8 w-0.5 bg-slate-300"></div>
+              {/* Garis Panah Kiri ke Ketua */}
+              <div className="w-6 sm:w-10 h-0.5 bg-slate-800 relative">
+                <div className="absolute -right-1 -top-1 border-l-[6px] border-l-slate-800 border-y-[5px] border-y-transparent"></div>
+              </div>
+
+              {/* KETUA SATGAS (Tengah) */}
+              <button
+                type="button"
+                onClick={() => setTab('ketua')}
+                className={`w-64 sm:w-72 bg-white rounded-2xl border-2 p-4 text-center transition-all hover:scale-102 cursor-pointer shadow-sm ${
+                  currentKey === 'ketua'
+                    ? 'border-emerald-600 ring-4 ring-emerald-500/20 bg-emerald-50/30'
+                    : 'border-slate-800 hover:border-emerald-500'
+                }`}
+              >
+                <h4 className="font-extrabold text-slate-900 text-xs sm:text-sm tracking-tight leading-snug">
+                  KETUA SATGAS PENGELOLA SAMPAH ORGANIK
+                </h4>
+              </button>
+
+              {/* Garis Panah Kanan ke Ketua */}
+              <div className="w-6 sm:w-10 h-0.5 bg-slate-800 relative">
+                <div className="absolute -left-1 -top-1 border-r-[6px] border-r-slate-800 border-y-[5px] border-y-transparent"></div>
+              </div>
+
+              {/* BENDAHARA (Kanan) */}
+              <button
+                type="button"
+                onClick={() => setTab('bendahara')}
+                className={`w-36 sm:w-44 bg-white rounded-2xl border-2 p-3.5 text-center transition-all hover:scale-102 cursor-pointer shadow-xs ${
+                  currentKey === 'bendahara'
+                    ? 'border-emerald-600 ring-4 ring-emerald-500/20 bg-emerald-50/30'
+                    : 'border-slate-800 hover:border-emerald-500'
+                }`}
+              >
+                <h4 className="font-extrabold text-slate-900 text-xs sm:text-sm tracking-wide">BENDAHARA</h4>
+              </button>
+
             </div>
 
-            {/* Level 3: Connecting Bridge for Divisions */}
-            <div className="hidden md:flex w-full items-center justify-center relative">
-              <div className="absolute top-0 left-1/6 right-1/6 h-0.5 bg-slate-300"></div>
-              <div className="w-1/3 flex justify-center"><div className="h-6 w-0.5 bg-slate-300"></div></div>
-              <div className="w-1/3 flex justify-center"><div className="h-6 w-0.5 bg-slate-300"></div></div>
-              <div className="w-1/3 flex justify-center"><div className="h-6 w-0.5 bg-slate-300"></div></div>
+            {/* Garis Cabang Bawah Ke Divisi */}
+            <div className="flex flex-col items-center w-full">
+              <div className="h-6 w-0.5 bg-slate-800"></div>
+              <div className="w-[72%] sm:w-[78%] h-0.5 bg-slate-800"></div>
             </div>
 
-            {/* Level 4: Divisions Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full relative">
+            {/* Level 3: 3 DIVISI BAWAH */}
+            <div className="grid grid-cols-3 gap-3 sm:gap-6 w-full mt-0">
               
-              {/* Sarana Prasarana */}
+              {/* DIVISI PRODUKSI & PENGOLAHAN */}
               <div className="flex flex-col items-center">
-                <div className="md:hidden h-4 w-0.5 bg-slate-300"></div>
-                <button 
+                <div className="h-6 w-0.5 bg-slate-800 relative">
+                  <div className="absolute -bottom-1 -left-1.25 border-t-[6px] border-t-slate-800 border-x-[5px] border-x-transparent"></div>
+                </div>
+                <button
                   type="button"
-                  onClick={() => setActiveTupoksi('sarpras')}
-                  className={`w-full rounded-2xl p-5 border text-center transition-all hover:scale-102 cursor-pointer ${
-                    activeTupoksi === 'sarpras' 
-                      ? 'bg-emerald-50 border-emerald-400 shadow-md ring-2 ring-emerald-500/20' 
-                      : 'bg-white border-slate-200 hover:border-emerald-300 shadow-sm'
+                  onClick={() => setTab('produksi')}
+                  className={`w-full bg-white rounded-2xl border-2 p-3 sm:p-4 text-center transition-all hover:scale-102 cursor-pointer min-h-[100px] flex flex-col justify-center items-center shadow-xs ${
+                    currentKey === 'produksi'
+                      ? 'border-emerald-600 ring-4 ring-emerald-500/20 bg-emerald-50/30'
+                      : 'border-slate-800 hover:border-emerald-500'
                   }`}
                 >
-                  <div className="bg-emerald-50 w-12 h-12 mx-auto rounded-full flex items-center justify-center mb-3 shadow-xs border border-emerald-100">
-                    <Wrench className="w-5 h-5 text-emerald-600" />
-                  </div>
-                  <h4 className="font-bold text-slate-800 text-sm leading-tight">Divisi<br/>Sarana Prasarana</h4>
-                  <p className="text-[10px] text-emerald-700 bg-emerald-100/50 py-0.5 px-2 rounded-md font-bold mt-2 inline-block">
-                    Lihat Tugas
-                  </p>
+                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">DIVISI</span>
+                  <h4 className="font-extrabold text-slate-900 text-xs sm:text-sm leading-tight">
+                    PRODUKSI & PENGOLAHAN
+                  </h4>
                 </button>
               </div>
 
-              {/* Produksi & Edukasi */}
+              {/* DIVISI SARANA & PRASARANA */}
               <div className="flex flex-col items-center">
-                <div className="md:hidden h-4 w-0.5 bg-slate-300"></div>
-                <button 
+                <div className="h-6 w-0.5 bg-slate-800 relative">
+                  <div className="absolute -bottom-1 -left-1.25 border-t-[6px] border-t-slate-800 border-x-[5px] border-x-transparent"></div>
+                </div>
+                <button
                   type="button"
-                  onClick={() => setActiveTupoksi('produksi')}
-                  className={`w-full rounded-2xl p-5 border text-center transition-all hover:scale-102 cursor-pointer ${
-                    activeTupoksi === 'produksi' 
-                      ? 'bg-teal-50 border-teal-400 shadow-md ring-2 ring-teal-500/20' 
-                      : 'bg-white border-slate-200 hover:border-teal-300 shadow-sm'
+                  onClick={() => setTab('sarpras')}
+                  className={`w-full bg-white rounded-2xl border-2 p-3 sm:p-4 text-center transition-all hover:scale-102 cursor-pointer min-h-[100px] flex flex-col justify-center items-center shadow-xs ${
+                    currentKey === 'sarpras'
+                      ? 'border-emerald-600 ring-4 ring-emerald-500/20 bg-emerald-50/30'
+                      : 'border-slate-800 hover:border-emerald-500'
                   }`}
                 >
-                  <div className="bg-teal-50 w-12 h-12 mx-auto rounded-full flex items-center justify-center mb-3 shadow-xs border border-teal-100">
-                    <Recycle className="w-5 h-5 text-teal-600" />
-                  </div>
-                  <h4 className="font-bold text-slate-800 text-sm leading-tight">Divisi<br/>Produksi & Edukasi</h4>
-                  <p className="text-[10px] text-teal-700 bg-teal-100/50 py-0.5 px-2 rounded-md font-bold mt-2 inline-block">
-                    Lihat Tugas
-                  </p>
+                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">DIVISI</span>
+                  <h4 className="font-extrabold text-slate-900 text-xs sm:text-sm leading-tight">
+                    SARANA & PRASARANA
+                  </h4>
                 </button>
               </div>
 
-              {/* Humas & Kemitraan */}
+              {/* DIVISI / KOORDINATOR MONITORING & KEMITRAAN */}
               <div className="flex flex-col items-center">
-                <div className="md:hidden h-4 w-0.5 bg-slate-300"></div>
-                <button 
+                <div className="h-6 w-0.5 bg-slate-800 relative">
+                  <div className="absolute -bottom-1 -left-1.25 border-t-[6px] border-t-slate-800 border-x-[5px] border-x-transparent"></div>
+                </div>
+                <button
                   type="button"
-                  onClick={() => setActiveTupoksi('humas')}
-                  className={`w-full rounded-2xl p-5 border text-center transition-all hover:scale-102 cursor-pointer ${
-                    activeTupoksi === 'humas' 
-                      ? 'bg-blue-50 border-blue-400 shadow-md ring-2 ring-blue-500/20' 
-                      : 'bg-white border-slate-200 hover:border-blue-300 shadow-sm'
+                  onClick={() => setTab('monev')}
+                  className={`w-full bg-white rounded-2xl border-2 p-3 sm:p-4 text-center transition-all hover:scale-102 cursor-pointer min-h-[100px] flex flex-col justify-center items-center shadow-xs ${
+                    currentKey === 'monev'
+                      ? 'border-emerald-600 ring-4 ring-emerald-500/20 bg-emerald-50/30'
+                      : 'border-slate-800 hover:border-emerald-500'
                   }`}
                 >
-                  <div className="bg-blue-50 w-12 h-12 mx-auto rounded-full flex items-center justify-center mb-3 shadow-xs border border-blue-100">
-                    <Users className="w-5 h-5 text-blue-600" />
-                  </div>
-                  <h4 className="font-bold text-slate-800 text-sm leading-tight">Divisi<br/>Humas & Kemitraan</h4>
-                  <p className="text-[10px] text-blue-700 bg-blue-100/50 py-0.5 px-2 rounded-md font-bold mt-2 inline-block">
-                    Lihat Tugas
-                  </p>
+                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">KOORDINATOR</span>
+                  <h4 className="font-extrabold text-slate-900 text-xs sm:text-sm leading-tight">
+                    MONITORING & KEMITRAAN
+                  </h4>
                 </button>
               </div>
 
             </div>
+
           </div>
         </div>
 
-        {/* Dynamic Job Description (Tupoksi Detail Box) */}
-        <div className="w-full max-w-5xl mx-auto bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-lg transition-all duration-300">
-          {(!activeTupoksi || activeTupoksi === 'ketua') && (
-            <div>
-              <span className="inline-block bg-emerald-100 text-emerald-800 font-bold text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wider mb-3">Tupoksi Utama</span>
-              <h4 className="text-lg sm:text-xl font-bold text-slate-800 mb-3">Ketua Satgas Eco-Enzyme</h4>
-              <ul className="text-slate-600 list-disc list-inside space-y-2 text-xs sm:text-sm leading-relaxed">
-                <li>Memimpin, mengawasi, dan mengkoordinasikan semua rangkaian program pembuatan Eco-Enzyme di tingkat RW.</li>
-                <li>Merumuskan program sosialisasi, jadwal kerja, serta mengevaluasi kendala teknis dari tiap-tiap divisi.</li>
-                <li>Memberikan pertimbangan krusial apabila terdapat kendala dalam kualitas hasil fermentasi.</li>
-                <li>Melaporkan berkala capaian hasil produksi dan pemanfaatan panen kepada Ketua RW 08.</li>
-              </ul>
-            </div>
-          )}
+        {/* Tab Tombol Navigasi Cepat (1-7) */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 no-scrollbar scroll-smooth">
+          {satgasData.map((item, index) => (
+            <button
+              key={item.id}
+              onClick={() => setTab(item.id)}
+              className={`px-4 py-2.5 rounded-2xl font-bold text-xs sm:text-sm whitespace-nowrap transition-all duration-200 cursor-pointer flex items-center gap-2 shrink-0 border ${
+                currentKey === item.id
+                  ? 'bg-emerald-600 border-emerald-600 text-white shadow-md'
+                  : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-100'
+              }`}
+            >
+              <span className={`w-5 h-5 rounded-full text-[10px] flex items-center justify-center font-black ${
+                currentKey === item.id ? 'bg-white text-emerald-700' : 'bg-slate-100 text-slate-600'
+              }`}>
+                {index + 1}
+              </span>
+              <span>{item.title}</span>
+            </button>
+          ))}
+        </div>
 
-          {activeTupoksi === 'pembina' && (
+        {/* Detail Tupoksi (Poin a - g) */}
+        <div className="w-full max-w-5xl mx-auto bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm transition-all duration-300">
+          
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-100 mb-6">
             <div>
-              <span className="inline-block bg-emerald-100 text-emerald-800 font-bold text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wider mb-3">Tupoksi Utama</span>
-              <h4 className="text-lg sm:text-xl font-bold text-slate-800 mb-3">Pembina Satgas (Ketua RW 08)</h4>
-              <ul className="text-slate-600 list-disc list-inside space-y-2 text-xs sm:text-sm leading-relaxed">
-                <li>Mengawasi seluruh rancangan kebijakan strategis satgas di lingkungan kelurahan.</li>
-                <li>Memberikan arahan langsung terkait pengadaan sarana dan prasarana berskala besar.</li>
-                <li>Menjadi jembatan koordinasi struktural antara Satgas tingkat RW dengan aparatur Kelurahan.</li>
-                <li>Mengevaluasi laporan capaian panen dan distribusi berkala satgas.</li>
-              </ul>
+              <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full uppercase tracking-wider border border-emerald-100">
+                {currentSatgas.badge}
+              </span>
+              <h3 className="text-xl sm:text-2xl font-black text-slate-900 mt-2">
+                {currentSatgas.title}
+              </h3>
             </div>
-          )}
+          </div>
 
-          {activeTupoksi === 'sarpras' && (
-            <div>
-              <span className="inline-block bg-emerald-100 text-emerald-800 font-bold text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wider mb-3">Tupoksi Divisi</span>
-              <h4 className="text-lg sm:text-xl font-bold text-slate-800 mb-3">Divisi Sarana Prasarana (Sarpras)</h4>
-              <ul className="text-slate-600 list-disc list-inside space-y-2 text-xs sm:text-sm leading-relaxed">
-                <li>Menyediakan, merawat, dan mencatat ketersediaan wadah fermentasi (ember/tong plastik).</li>
-                <li>Mengkoordinir penyediaan bahan pendukung seperti gula merah tebu/molase dan air bersih berkualitas tinggi.</li>
-                <li>Mengatur titik lokasi pengumpulan sisa sampah kulit buah segar atau sayuran yang disumbangkan oleh warga.</li>
-                <li>Memelihara kesiapan alat ukur penting (timbangan digital, gelas ukur, dan alat penyaring).</li>
-              </ul>
+          <div className="space-y-6">
+            
+            {/* a) Ringkasan Kegiatan */}
+            <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 sm:p-5">
+              <h4 className="text-xs font-black text-slate-400 uppercase tracking-widest flex items-center gap-2 mb-2">
+                <FileText className="w-4 h-4 text-emerald-600" />
+                a) Ringkasan Kegiatan
+              </h4>
+              <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-medium">
+                {currentSatgas.ringkasan}
+              </p>
             </div>
-          )}
 
-          {activeTupoksi === 'produksi' && (
-            <div>
-              <span className="inline-block bg-teal-100 text-teal-800 font-bold text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wider mb-3">Tupoksi Divisi</span>
-              <h4 className="text-lg sm:text-xl font-bold text-slate-800 mb-3">Divisi Produksi & Edukasi</h4>
-              <ul className="text-slate-600 list-disc list-inside space-y-2 text-xs sm:text-sm leading-relaxed">
-                <li>Mengatur serta memandu proses pencampuran bahan baku dengan rasio baku 1:3:10.</li>
-                <li>Membuat kalender pemantauan harian, utamanya kontrol pembuangan gas (burping) pada bulan pertama.</li>
-                <li>Menjadi instruktur demo pembuatan Eco-Enzyme dalam pertemuan-pertemuan warga maupun PKK.</li>
-                <li>Menilai kematangan fisik eco-enzyme pada masa akhir fermentasi 90 hari sebelum penyaringan.</li>
-              </ul>
-            </div>
-          )}
+            {/* Grid 2 Kolom: b) Tugas & c) Tanggung Jawab */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-2xs">
+                <h4 className="text-xs font-black text-slate-400 uppercase tracking-widest flex items-center gap-2 mb-3">
+                  <Briefcase className="w-4 h-4 text-emerald-600" />
+                  b) Tugas
+                </h4>
+                <ul className="space-y-2 text-xs sm:text-sm text-slate-700">
+                  {currentSatgas.tugas.map((task, idx) => (
+                    <li key={idx} className="flex items-start gap-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0 mt-1.5"></span>
+                      <span className="leading-relaxed">{task}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-          {activeTupoksi === 'humas' && (
-            <div>
-              <span className="inline-block bg-blue-100 text-blue-800 font-bold text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wider mb-3">Tupoksi Divisi</span>
-              <h4 className="text-lg sm:text-xl font-bold text-slate-800 mb-3">Divisi Humas & Kemitraan</h4>
-              <ul className="text-slate-600 list-disc list-inside space-y-2 text-xs sm:text-sm leading-relaxed">
-                <li>Menyosialisasikan sejuta manfaat dari cairan Eco-Enzyme kepada seluruh warga RW 08.</li>
-                <li>Menjembatani kerja sama dengan instansi luar seperti Kelurahan, Dinas Lingkungan Hidup (DLH), maupun sekolah sekitar.</li>
-                <li>Mendistribusikan hasil panen untuk kemaslahatan warga (disinfektan lingkungan, penjernih air selokan, maupun pupuk tanaman warga).</li>
-                <li>Mempromosikan pencapaian ramah lingkungan RW 08 Kutowinangun Kidul di media sosial.</li>
-              </ul>
+              <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-2xs">
+                <h4 className="text-xs font-black text-slate-400 uppercase tracking-widest flex items-center gap-2 mb-3">
+                  <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                  c) Tanggung Jawab
+                </h4>
+                <ul className="space-y-2 text-xs sm:text-sm text-slate-700">
+                  {currentSatgas.tanggungJawab.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0 mt-1.5"></span>
+                      <span className="leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          )}
+
+            {/* Grid 2 Kolom: d) Wewenang & e) Bahan Kerja */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-2xs">
+                <h4 className="text-xs font-black text-slate-400 uppercase tracking-widest flex items-center gap-2 mb-3">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  d) Wewenang
+                </h4>
+                <ul className="space-y-2 text-xs sm:text-sm text-slate-700">
+                  {currentSatgas.wewenang.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0 mt-1.5"></span>
+                      <span className="leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-2xs">
+                <h4 className="text-xs font-black text-slate-400 uppercase tracking-widest flex items-center gap-2 mb-3">
+                  <Layers className="w-4 h-4 text-emerald-600" />
+                  e) Bahan Kerja
+                </h4>
+                <ul className="space-y-2 text-xs sm:text-sm text-slate-700">
+                  {currentSatgas.bahanKerja.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0 mt-1.5"></span>
+                      <span className="leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Grid 2 Kolom: f) Ukuran Keberhasilan & g) Kompetensi */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-emerald-50/60 border border-emerald-200/80 rounded-2xl p-5">
+                <h4 className="text-xs font-black text-emerald-900 uppercase tracking-widest flex items-center gap-2 mb-3">
+                  <Target className="w-4 h-4 text-emerald-600" />
+                  f) Ukuran Keberhasilan
+                </h4>
+                <ul className="space-y-2 text-xs sm:text-sm text-emerald-950">
+                  {currentSatgas.ukuranKeberhasilan.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 shrink-0 mt-1.5"></span>
+                      <span className="leading-relaxed font-medium">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="bg-amber-50/60 border border-amber-200/80 rounded-2xl p-5">
+                <h4 className="text-xs font-black text-amber-900 uppercase tracking-widest flex items-center gap-2 mb-3">
+                  <Award className="w-4 h-4 text-amber-600" />
+                  g) Kompetensi Jabatan
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {currentSatgas.kompetensi.map((skill, idx) => (
+                    <span 
+                      key={idx} 
+                      className="bg-white border border-amber-200 text-amber-950 px-3 py-1.5 rounded-xl text-xs font-semibold shadow-2xs"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+          </div>
+
         </div>
 
       </div>

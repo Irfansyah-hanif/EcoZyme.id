@@ -1,6 +1,7 @@
 import { 
   Wrench, 
-  Leaf, 
+  Scissors, 
+  Droplet, 
   Droplets, 
   FlaskConical, 
   CheckCircle2, 
@@ -14,31 +15,45 @@ import {
 
 export const stepsData = [
   {
-    title: "Persiapan Wadah & Bahan",
+    title: "Persiapan Alat & Bahan",
     icon: Wrench,
-    desc: "Siapkan wadah plastik bermulut lebar yang bersih dari sisa sabun, air sumur/air matang dingin, gula merah tebu/molase, dan pilahan sampah organik dapur yang masih segar.",
+    items: [
+      "Siapkan wadah plastik seperti drum atau galon bekas yang telah bersih bebas dari sisa sabun dan kotoran.",
+      "Siapkan air sumur atau matang yang dingin.",
+      "Gula merah tebu atau gula aren atau molase.",
+      "Sampah organik seperti kulit buah dan sayur yang masih segar dan telah dibersihkan dengan air bersih.",
+      "Air bersih",
+      "Ember",
+      "Tampah atau saringan"
+    ],
     proTip: "Gunakan wadah plastik fleksibel. Hindari wadah kaca atau logam karena logam mudah berkarat dan kaca berisiko pecah akibat tingginya tekanan gas saat fermentasi."
   },
   {
-    title: "Pemotongan Sampah Organik",
-    icon: Leaf,
-    desc: "Potong-potong sisa sayuran mentah segar dan kulit buah pilihan menjadi ukuran lebih kecil (sekitar 2 hingga 3 sentimeter).",
-    proTip: "Semakin kecil potongan, semakin luas area sentuh mikroba. Ini membuat proses ekstraksi enzim berjalan jauh lebih cepat dan merata."
+    title: "Pemotongan",
+    icon: Scissors,
+    desc: "Potong-potong sisa sayuran yang masih segar atau kulit buah jika sisa sampah organik tersebut terlalu besar.",
+    proTip: "Semakin kecil potongan, semakin luas area sentuh mikroba. Hal ini membuat proses ekstraksi enzim berjalan jauh lebih cepat dan merata."
   },
   {
-    title: "Pelarutan Gula dalam Air",
+    title: "Pencucian dan Penirisan",
+    icon: Droplet,
+    desc: "Cuci bersih potongan sampah organik dari sisa sayur yang masih segar atau kulit buah tersebut dengan ember lalu tiriskan supaya kadar air berkurang.",
+    proTip: "Gunakan penirisan berupa tampah ataupun saringan dan tunggu beberapa menit."
+  },
+  {
+    title: "Pelarutan",
     icon: Droplets,
-    desc: "Masukkan air bersih ke dalam wadah plastik sesuai dengan takaran kalkulator, lalu tuangkan gula merah atau molase. Aduk secara merata hingga larut sepenuhnya.",
-    proTip: "Jika menggunakan air PDAM langsung, endapkan terlebih dahulu selama 24 jam dalam wadah terbuka agar kandungan kaporitnya menguap sepenuhnya."
+    desc: "Masukkan air bersih ke dalam wadah plastik dengan takaran kalkulator, lalu tuangkan gula merah tebu atau gula aren atau molase. Aduk secara merata hingga cairan tersebut larut sepenuhnya dengan air.",
+    proTip: "Jika menggunakan air PDAM langsung yang berkaporit tinggi, endapkan terlebih dahulu selama 2 - 3 hari dalam wadah terbuka agar kandungan kaporitnya menguap sepenuhnya."
   },
   {
-    title: "Memasukkan Sampah Organik",
+    title: "Pencampuran",
     icon: FlaskConical,
-    desc: "Masukkan seluruh potongan sampah organik yang sudah ditakar ke dalam larutan air gula. Aduk perlahan agar semua bagian basah terendam larutan.",
+    desc: "Masukkan sampah organik yang telah dipilah dan dicuci ke dalam drum atau galon bekas beserta air bersih dan larutan gula merah tebu atau gula aren atau molase. Perbandingan ketiga bahan tersebut adalah 1 : 3 : 10 (Gula : Sampah Organik : Air).",
     proTip: "Pastikan menyisakan ruang kosong minimal 40% dari tinggi wadah. Ruang udara ini sangat krusial sebagai tempat sirkulasi akumulasi gas karbon dioksida."
   },
   {
-    title: "Penutupan Wadah Rapat",
+    title: "Penutupan",
     icon: CheckCircle2,
     desc: "Tutup wadah dengan sangat rapat hingga kedap udara menggunakan penutup aslinya. Pastikan tidak ada celah udara luar yang masuk.",
     proTip: "Bila tutup terasa longgar, lapisi bibir wadah plastik dengan lembaran plastik bersih terlebih dahulu, kemudian ikat kuat dengan karet sebelum ditutup rapat."
@@ -46,17 +61,16 @@ export const stepsData = [
   {
     title: "Pelabelan & Penyimpanan",
     icon: CalendarClock,
-    desc: "Tuliskan tanggal pembuatan, masa wajib buang gas (30 hari pertama), dan tanggal perkiraan panen (90 hari) pada kertas label lalu tempelkan pada wadah.",
-    proTip: "Simpan wadah di sudut rumah yang teduh, sejuk, berventilasi baik, terhindar dari panas matahari langsung, serta jauh dari tumpukan sampah basah maupun saluran got."
+    desc: "Tuliskan tanggal pembuatan, masa wajib buang gas (30 hari pertama), dan tanggal perkiraan panen (90 hari) pada kertas label lalu tempelkan pada wadah cairan eco-enzyme.",
+    proTip: "Simpan wadah di sudut rumah yang teduh, sejuk, berventilasi baik, terhindar dari panas matahari langsung, jauh dari sampah basah maupun saluran got, serta usahakan wadah tidak ditutup terlalu kencang."
   },
   {
     title: "Video Panduan Tutorial",
     icon: Video,
     isVideo: true,
-    // ID video YouTube aktif (Tutorial Pembuatan Eco-Enzyme)
     videoUrl: "https://www.youtube-nocookie.com/embed/3zAoGn2T4WY",
-    desc: "Simak video demonstrasi pembuatan Eco-Enzyme secara langsung dan visual untuk mempermudah praktik kamu di rumah.",
-    proTip: "Pastikan rasio bahan baku 1 (gula) : 3 (sampah organik) : 10 (air) diterapkan dengan presisi tinggi saat mengikuti tutorial video."
+    desc: "Simak video tutorial dari TV Tani Kementan mengenai langkah praktis pembuatan Eco-Enzyme memanfaatkan limbah dapur rumah tangga.",
+    proTip: "Gunakan minimal 5 jenis kulit buah (seperti jeruk, nanas, pisang, pepaya) agar menghasilkan aroma yang wangi dan kandungan enzim yang kaya."
   }
 ];
 
