@@ -56,9 +56,13 @@ export default function App() {
             <Steps activeStep={activeStep} setActiveStep={setActiveStep} />
           </section>
 
-          <section id="kalkulator" className="w-full space-y-8">
+          <section id="kalkulator" className="w-full">
             <Calculator onCalculate={handleCalculate} onReset={handleReset} />
-            {calcResult && <HasilEnzyme data={calcResult} />}
+          </section>
+
+          {/* ⚡ Seksi Hasil Panen / Pascapanen (SEKARANG SELALU TAMPIL) */}
+          <section id="pemanfaatan-hasil" className="w-full">
+            <HasilEnzyme />
           </section>
 
           <section id="planner" className="w-full">
@@ -69,7 +73,7 @@ export default function App() {
             <Timeline />
           </section>
 
-          {/* ⚡ Oper Props activeTupoksi dan setActiveTupoksi di sini */}
+          {/* ⚡ Oper Props activeTupoksi dan setActiveTupoksi */}
           <section id="struktur" className="w-full">
             <Tupoksi 
               activeTupoksi={activeTupoksi} 

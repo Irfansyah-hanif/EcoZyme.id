@@ -11,7 +11,7 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen, onResetAll }) {
 
   // ⚡ State PWA & Perangkat iOS
   const [deferredPrompt, setDeferredPrompt] = useState(null);
-  const [isInstallable, setIsInstallable] = useState(true); // Default true agar tombol selalu muncul
+  const [isInstallable, setIsInstallable] = useState(true);
   const [isIOS, setIsIOS] = useState(false);
   const [showIosModal, setShowIosModal] = useState(false);
 
@@ -21,10 +21,12 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen, onResetAll }) {
   const navContainerRef = useRef(null);
   const itemRefs = useRef({});
 
+  // 💡 Tautan Menu disesuaikan persis dengan ID Seksi di App.jsx
   const menuItems = [
     { name: 'Beranda', id: '#hero' },
     { name: 'Panduan', id: '#cara-pembuatan' },
     { name: 'Kalkulator', id: '#kalkulator' },
+    { name: 'Hasil Panen', id: '#pemanfaatan-hasil' },
     { name: 'Jadwal', id: '#perencana' },
     { name: 'Pengurus', id: '#struktur' },
   ];
@@ -66,7 +68,6 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen, onResetAll }) {
   // 💡 Trigger Install Prompt
   const handleInstallClick = async () => {
     if (isIOS) {
-      // Tampilkan petunjuk khusus pengguna iPhone
       setShowIosModal(true);
       return;
     }
@@ -79,12 +80,11 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen, onResetAll }) {
       }
       setDeferredPrompt(null);
     } else {
-      // Fallback jika dibuka di browser biasa yang tidak memicu prompt
       alert("Untuk menginstall aplikasi, buka menu opsi pada browser kamu lalu pilih 'Tambah ke Layar Utama' / 'Add to Home Screen'.");
     }
   };
 
-  // 💡 Kalkulasi posisi & lebar garis
+  // 💡 Kalkulasi posisi & lebar garis indikator
   const updateIndicator = useCallback((activeId) => {
     const activeElement = itemRefs.current[activeId];
     const containerElement = navContainerRef.current;
@@ -375,4 +375,4 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen, onResetAll }) {
       )}
     </nav>
   );
-} 
+}

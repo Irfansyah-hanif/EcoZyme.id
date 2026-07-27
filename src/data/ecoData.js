@@ -68,7 +68,7 @@ export const stepsData = [
     title: "Video Panduan Tutorial",
     icon: Video,
     isVideo: true,
-    videoUrl: "https://www.youtube-nocookie.com/embed/3zAoGn2T4WY",
+    videoUrl: "https://www.youtube-nocookie.com/embed/M0Mgr2AXvSU",
     desc: "Simak video tutorial dari TV Tani Kementan mengenai langkah praktis pembuatan Eco-Enzyme memanfaatkan limbah dapur rumah tangga.",
     proTip: "Gunakan minimal 5 jenis kulit buah (seperti jeruk, nanas, pisang, pepaya) agar menghasilkan aroma yang wangi dan kandungan enzim yang kaya."
   }
