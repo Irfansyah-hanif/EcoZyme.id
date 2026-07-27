@@ -7,13 +7,7 @@ import {
   FileText, 
   Target, 
   Award, 
-  Layers,
-  Shield,
-  User,
-  Wrench,
-  Recycle,
-  FileSpreadsheet,
-  Wallet
+  Layers
 } from 'lucide-react';
 import { satgasHeader, satgasData } from '../data/satgasData';
 
@@ -41,11 +35,11 @@ export default function Tupoksi({ activeTupoksi, setActiveTupoksi }) {
           </p>
         </div>
 
-        {/* 🌳 BAGAN STRUKTUR ORGANISASI VISUAL */}
-        <div className="w-full max-w-5xl mx-auto mb-16 bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm">
-          <h3 className="text-center text-xs font-black text-slate-400 uppercase tracking-widest mb-8">
-            Bagan Struktur Organisasi Satgas
-          </h3>
+        {/* 🌳 BAGAN STRUKTUR ORGANISASI VISUAL (FUNGSI DUAL: BAGAN & TOMBOL PENGUBAH TUPOKSI) */}
+        <div className="w-full max-w-5xl mx-auto mb-12 bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm">
+          <p className="text-center text-xs font-bold text-slate-500 uppercase tracking-widest mb-8">
+            Klik salah satu kotak struktur di bawah untuk melihat Uraian Tugas Pokok & Fungsi (Tupoksi)
+          </p>
 
           <div className="flex flex-col items-center">
             
@@ -54,14 +48,14 @@ export default function Tupoksi({ activeTupoksi, setActiveTupoksi }) {
               <button
                 type="button"
                 onClick={() => setTab('pembina')}
-                className={`w-64 bg-white rounded-2xl border-2 p-4 text-center transition-all hover:scale-102 cursor-pointer shadow-xs ${
+                className={`w-64 rounded-2xl border-2 p-4 text-center transition-all hover:scale-102 cursor-pointer shadow-xs ${
                   currentKey === 'pembina'
-                    ? 'border-emerald-600 ring-4 ring-emerald-500/20 bg-emerald-50/30'
-                    : 'border-slate-800 hover:border-emerald-500'
+                    ? 'border-emerald-600 ring-4 ring-emerald-500/20 bg-emerald-50 text-emerald-900 font-bold'
+                    : 'bg-white border-slate-800 hover:border-emerald-500 text-slate-900'
                 }`}
               >
-                <h4 className="font-extrabold text-slate-900 text-sm tracking-wide">PEMBINA</h4>
-                <p className="text-xs text-slate-600 mt-0.5">Ketua RW</p>
+                <h4 className="font-extrabold text-sm tracking-wide">PEMBINA</h4>
+                <p className="text-xs text-slate-600 mt-0.5 font-normal">Ketua RW</p>
               </button>
               
               {/* Garis Panah Bawah */}
@@ -77,13 +71,13 @@ export default function Tupoksi({ activeTupoksi, setActiveTupoksi }) {
               <button
                 type="button"
                 onClick={() => setTab('sekretaris')}
-                className={`w-36 sm:w-44 bg-white rounded-2xl border-2 p-3.5 text-center transition-all hover:scale-102 cursor-pointer shadow-xs ${
+                className={`w-36 sm:w-44 rounded-2xl border-2 p-3.5 text-center transition-all hover:scale-102 cursor-pointer shadow-xs ${
                   currentKey === 'sekretaris'
-                    ? 'border-emerald-600 ring-4 ring-emerald-500/20 bg-emerald-50/30'
-                    : 'border-slate-800 hover:border-emerald-500'
+                    ? 'border-emerald-600 ring-4 ring-emerald-500/20 bg-emerald-50 text-emerald-900 font-bold'
+                    : 'bg-white border-slate-800 hover:border-emerald-500 text-slate-900'
                 }`}
               >
-                <h4 className="font-extrabold text-slate-900 text-xs sm:text-sm tracking-wide">SEKRETARIS</h4>
+                <h4 className="font-extrabold text-xs sm:text-sm tracking-wide">SEKRETARIS</h4>
               </button>
 
               {/* Garis Panah Kiri ke Ketua */}
@@ -95,13 +89,13 @@ export default function Tupoksi({ activeTupoksi, setActiveTupoksi }) {
               <button
                 type="button"
                 onClick={() => setTab('ketua')}
-                className={`w-64 sm:w-72 bg-white rounded-2xl border-2 p-4 text-center transition-all hover:scale-102 cursor-pointer shadow-sm ${
+                className={`w-64 sm:w-72 rounded-2xl border-2 p-4 text-center transition-all hover:scale-102 cursor-pointer shadow-sm ${
                   currentKey === 'ketua'
-                    ? 'border-emerald-600 ring-4 ring-emerald-500/20 bg-emerald-50/30'
-                    : 'border-slate-800 hover:border-emerald-500'
+                    ? 'border-emerald-600 ring-4 ring-emerald-500/20 bg-emerald-50 text-emerald-900 font-bold'
+                    : 'bg-white border-slate-800 hover:border-emerald-500 text-slate-900'
                 }`}
               >
-                <h4 className="font-extrabold text-slate-900 text-xs sm:text-sm tracking-tight leading-snug">
+                <h4 className="font-extrabold text-xs sm:text-sm tracking-tight leading-snug">
                   KETUA SATGAS PENGELOLA SAMPAH ORGANIK
                 </h4>
               </button>
@@ -115,13 +109,13 @@ export default function Tupoksi({ activeTupoksi, setActiveTupoksi }) {
               <button
                 type="button"
                 onClick={() => setTab('bendahara')}
-                className={`w-36 sm:w-44 bg-white rounded-2xl border-2 p-3.5 text-center transition-all hover:scale-102 cursor-pointer shadow-xs ${
+                className={`w-36 sm:w-44 rounded-2xl border-2 p-3.5 text-center transition-all hover:scale-102 cursor-pointer shadow-xs ${
                   currentKey === 'bendahara'
-                    ? 'border-emerald-600 ring-4 ring-emerald-500/20 bg-emerald-50/30'
-                    : 'border-slate-800 hover:border-emerald-500'
+                    ? 'border-emerald-600 ring-4 ring-emerald-500/20 bg-emerald-50 text-emerald-900 font-bold'
+                    : 'bg-white border-slate-800 hover:border-emerald-500 text-slate-900'
                 }`}
               >
-                <h4 className="font-extrabold text-slate-900 text-xs sm:text-sm tracking-wide">BENDAHARA</h4>
+                <h4 className="font-extrabold text-xs sm:text-sm tracking-wide">BENDAHARA</h4>
               </button>
 
             </div>
@@ -143,14 +137,14 @@ export default function Tupoksi({ activeTupoksi, setActiveTupoksi }) {
                 <button
                   type="button"
                   onClick={() => setTab('produksi')}
-                  className={`w-full bg-white rounded-2xl border-2 p-3 sm:p-4 text-center transition-all hover:scale-102 cursor-pointer min-h-[100px] flex flex-col justify-center items-center shadow-xs ${
+                  className={`w-full rounded-2xl border-2 p-3 sm:p-4 text-center transition-all hover:scale-102 cursor-pointer min-h-[100px] flex flex-col justify-center items-center shadow-xs ${
                     currentKey === 'produksi'
-                      ? 'border-emerald-600 ring-4 ring-emerald-500/20 bg-emerald-50/30'
-                      : 'border-slate-800 hover:border-emerald-500'
+                      ? 'border-emerald-600 ring-4 ring-emerald-500/20 bg-emerald-50 text-emerald-900 font-bold'
+                      : 'bg-white border-slate-800 hover:border-emerald-500 text-slate-900'
                   }`}
                 >
-                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">DIVISI</span>
-                  <h4 className="font-extrabold text-slate-900 text-xs sm:text-sm leading-tight">
+                  <span className="text-[10px] font-bold uppercase tracking-wider mb-1 text-slate-500">DIVISI</span>
+                  <h4 className="font-extrabold text-xs sm:text-sm leading-tight">
                     PRODUKSI & PENGOLAHAN
                   </h4>
                 </button>
@@ -164,14 +158,14 @@ export default function Tupoksi({ activeTupoksi, setActiveTupoksi }) {
                 <button
                   type="button"
                   onClick={() => setTab('sarpras')}
-                  className={`w-full bg-white rounded-2xl border-2 p-3 sm:p-4 text-center transition-all hover:scale-102 cursor-pointer min-h-[100px] flex flex-col justify-center items-center shadow-xs ${
+                  className={`w-full rounded-2xl border-2 p-3 sm:p-4 text-center transition-all hover:scale-102 cursor-pointer min-h-[100px] flex flex-col justify-center items-center shadow-xs ${
                     currentKey === 'sarpras'
-                      ? 'border-emerald-600 ring-4 ring-emerald-500/20 bg-emerald-50/30'
-                      : 'border-slate-800 hover:border-emerald-500'
+                      ? 'border-emerald-600 ring-4 ring-emerald-500/20 bg-emerald-50 text-emerald-900 font-bold'
+                      : 'bg-white border-slate-800 hover:border-emerald-500 text-slate-900'
                   }`}
                 >
-                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">DIVISI</span>
-                  <h4 className="font-extrabold text-slate-900 text-xs sm:text-sm leading-tight">
+                  <span className="text-[10px] font-bold uppercase tracking-wider mb-1 text-slate-500">DIVISI</span>
+                  <h4 className="font-extrabold text-xs sm:text-sm leading-tight">
                     SARANA & PRASARANA
                   </h4>
                 </button>
@@ -185,14 +179,14 @@ export default function Tupoksi({ activeTupoksi, setActiveTupoksi }) {
                 <button
                   type="button"
                   onClick={() => setTab('monev')}
-                  className={`w-full bg-white rounded-2xl border-2 p-3 sm:p-4 text-center transition-all hover:scale-102 cursor-pointer min-h-[100px] flex flex-col justify-center items-center shadow-xs ${
+                  className={`w-full rounded-2xl border-2 p-3 sm:p-4 text-center transition-all hover:scale-102 cursor-pointer min-h-[100px] flex flex-col justify-center items-center shadow-xs ${
                     currentKey === 'monev'
-                      ? 'border-emerald-600 ring-4 ring-emerald-500/20 bg-emerald-50/30'
-                      : 'border-slate-800 hover:border-emerald-500'
+                      ? 'border-emerald-600 ring-4 ring-emerald-500/20 bg-emerald-50 text-emerald-900 font-bold'
+                      : 'bg-white border-slate-800 hover:border-emerald-500 text-slate-900'
                   }`}
                 >
-                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">KOORDINATOR</span>
-                  <h4 className="font-extrabold text-slate-900 text-xs sm:text-sm leading-tight">
+                  <span className="text-[10px] font-bold uppercase tracking-wider mb-1 text-slate-500">KOORDINATOR</span>
+                  <h4 className="font-extrabold text-xs sm:text-sm leading-tight">
                     MONITORING & KEMITRAAN
                   </h4>
                 </button>
@@ -203,29 +197,7 @@ export default function Tupoksi({ activeTupoksi, setActiveTupoksi }) {
           </div>
         </div>
 
-        {/* Tab Tombol Navigasi Cepat (1-7) */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 no-scrollbar scroll-smooth">
-          {satgasData.map((item, index) => (
-            <button
-              key={item.id}
-              onClick={() => setTab(item.id)}
-              className={`px-4 py-2.5 rounded-2xl font-bold text-xs sm:text-sm whitespace-nowrap transition-all duration-200 cursor-pointer flex items-center gap-2 shrink-0 border ${
-                currentKey === item.id
-                  ? 'bg-emerald-600 border-emerald-600 text-white shadow-md'
-                  : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-100'
-              }`}
-            >
-              <span className={`w-5 h-5 rounded-full text-[10px] flex items-center justify-center font-black ${
-                currentKey === item.id ? 'bg-white text-emerald-700' : 'bg-slate-100 text-slate-600'
-              }`}>
-                {index + 1}
-              </span>
-              <span>{item.title}</span>
-            </button>
-          ))}
-        </div>
-
-        {/* Detail Tupoksi (Poin a - g) */}
+        {/* Panel Detail Tupoksi (Akan otomatis berganti sesuai posisi yang diklik di bagan) */}
         <div className="w-full max-w-5xl mx-auto bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm transition-all duration-300">
           
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-100 mb-6">

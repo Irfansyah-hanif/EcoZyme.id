@@ -1,5 +1,5 @@
 export const satgasHeader = {
-  title: "USULAN STRUKTUR PENGURUS PENGELOLA SAMPAH ORGANIK TIAP RW DI KELURAHAN KUTOWINANGUN KIDUL, TINGKIR, SALATIGA",
+  title: "STRUKTUR PENGURUS PENGELOLA SAMPAH ORGANIK",
   subtitle: "TIAP RW DI KELURAHAN KUTOWINANGUN KIDUL, TINGKIR, SALATIGA",
   summaryTitle: "URAIAN TUGAS POKOK FUNGSI",
   summaryDesc: "Struktur pengurus pengelola sampah organik di Kelurahan Kutowinangun Kidul"
@@ -7,7 +7,7 @@ export const satgasHeader = {
 
 export const satgasData = [
   {
-    id: 1,
+    id: "pembina",
     title: "PEMBINA (KETUA RW)",
     badge: "Pembina Utama",
     ringkasan: "Memberikan arahan, pembinaan, dan pengawasan terhadap pelaksanaan pengelolaan sampah organik di tingkat RW agar berjalan sesuai tujuan.",
@@ -44,7 +44,7 @@ export const satgasData = [
     ]
   },
   {
-    id: 2,
+    id: "ketua",
     title: "KETUA SATGAS PENGELOLA SAMPAH ORGANIK",
     badge: "Pimpinan Operasional",
     ringkasan: "Memimpin seluruh kegiatan operasional pengelolaan sampah organik di wilayah RW.",
@@ -83,7 +83,7 @@ export const satgasData = [
     ]
   },
   {
-    id: 3,
+    id: "sekretaris",
     title: "SEKRETARIS",
     badge: "Administrasi",
     ringkasan: "Mengelola seluruh administrasi organisasi Satgas.",
@@ -117,7 +117,7 @@ export const satgasData = [
     ]
   },
   {
-    id: 4,
+    id: "bendahara",
     title: "BENDAHARA",
     badge: "Keuangan",
     ringkasan: "Mengelola seluruh administrasi dan keuangan Satgas.",
@@ -150,7 +150,7 @@ export const satgasData = [
     ]
   },
   {
-    id: 5,
+    id: "produksi",
     title: "DIVISI PRODUKSI & PENGOLAHAN",
     badge: "Divisi Teknis",
     ringkasan: "Melaksanakan pengolahan sampah organik menjadi produk yang bernilai guna.",
@@ -183,7 +183,7 @@ export const satgasData = [
     ]
   },
   {
-    id: 6,
+    id: "sarpras",
     title: "DIVISI SARANA & PRASARANA",
     badge: "Divisi Logistik",
     ringkasan: "Mengelola seluruh fasilitas pendukung pengelolaan sampah organik.",
@@ -215,7 +215,7 @@ export const satgasData = [
     ]
   },
   {
-    id: 7,
+    id: "monev",
     title: "DIVISI MONITORING & KEMITRAAN",
     badge: "Divisi Humas & Monev",
     ringkasan: "Melaksanakan kegiatan monitoring, evaluasi, pendampingan, serta membangun dan memelihara kemitraan dengan berbagai pihak guna mendukung keberlanjutan pengelolaan sampah organik di tingkat RW.",
