@@ -63,9 +63,6 @@ export default function Planner({ startDate, setStartDate }) {
         
         {/* Header Section */}
         <div className="text-center mb-12">
-          <span className="text-emerald-600 font-bold uppercase tracking-widest text-sm bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100">
-            Asisten Digital
-          </span>
           <h2 className="text-3xl font-extrabold text-slate-900 mt-3">Rencana & Jadwal Pembuatan</h2>
           <p className="mt-4 text-slate-600 max-w-2xl mx-auto text-sm sm:text-base">
             Tentukan tanggal di bawah ini, dan sistem akan menghitung jadwal penting proses fermentasi Anda hingga waktu panen.

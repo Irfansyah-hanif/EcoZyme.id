@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sprout, ArrowRight, Leaf, Droplets, FlaskConical } from 'lucide-react';
+import { ArrowRight, Leaf, Droplets, FlaskConical } from 'lucide-react';
 
 export default function Hero() {
   // Fungsi handler untuk smooth scroll dengan memperhitungkan offset sticky header
@@ -30,9 +30,6 @@ export default function Hero() {
         
         {/* Kolom Kiri: Teks & CTA */}
         <div className="w-full md:w-1/2 text-center md:text-left z-10">
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-emerald-400/10 text-emerald-300 border border-emerald-400/20 mb-6">
-            <Sprout className="w-3.5 h-3.5" /> Pelopor Gerakan Eco-Enzyme Salatiga
-          </span>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-black leading-tight mb-6 tracking-tight">
             Ubah Sampah Dapur Menjadi <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-teal-200">Cairan Ajaib</span>
           </h1>
@@ -77,4 +74,4 @@ export default function Hero() {
       </div>
     </section>
   );
-}
+} 

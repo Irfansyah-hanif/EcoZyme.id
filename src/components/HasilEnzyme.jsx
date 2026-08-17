@@ -100,14 +100,10 @@ export default function HasilEnzyme() {
 
   return (
     <section id="pemanfaatan-hasil" className="w-full py-16 md:py-20 bg-white border-t border-slate-100">
-      {/* Mengubah max-w-7xl mx-auto menjadi w-full px-4 sm:px-8 md:px-12 lg:px-16 */}
       <div className="w-full px-4 sm:px-8 md:px-12 lg:px-16">
         
         {/* Header Section */}
         <div className="text-center mb-12">
-          <span className="text-emerald-600 font-bold uppercase tracking-widest text-sm bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100">
-            Pascapanen
-          </span>
           <h2 className="text-3xl font-extrabold text-slate-900 mt-3">Panduan Pengolahan Hasil Panen</h2>
           <p className="mt-4 text-slate-600 max-w-2xl mx-auto text-sm sm:text-base">
             Eco-Enzyme murni hasil 90 hari fermentasi memiliki konsentrasi tinggi. Pilih opsi di bawah ini untuk melihat takaran pencampuran dan langkah aplikasi siap gunanya!

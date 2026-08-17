@@ -15,9 +15,6 @@ export default function Steps({ activeStep = 0, setActiveStep }) {
         
         {/* Header Section */}
         <div className="text-center mb-12">
-          <span className="text-emerald-600 font-bold uppercase tracking-widest text-sm bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100">
-            SOP 6P to Eco-Enzyme
-          </span>
           <h2 className="text-3xl font-extrabold text-slate-900 mt-3">Panduan Langkah Pembuatan</h2>
           <p className="mt-4 text-slate-600 max-w-2xl mx-auto text-sm sm:text-base">
             SOP 6P: <em>Turn Waste into Worth</em>. Klik setiap langkah untuk membaca petunjuk lengkap & <strong>Tips Anti Gagal</strong>.

@@ -12,6 +12,7 @@ const Planner = lazy(() => import('./components/Planner'));
 const Timeline = lazy(() => import('./components/Timeline'));
 const Tupoksi = lazy(() => import('./components/Tupoksi'));
 const Troubleshooting = lazy(() => import('./components/Troubleshooting'));
+const EdukasiCarousel = lazy(() => import('./components/EdukasiCarousel'));
 
 const ComponentLoader = () => (
   <div className="flex justify-center items-center py-12 text-emerald-600 font-medium animate-pulse">
@@ -60,7 +61,7 @@ export default function App() {
             <Calculator onCalculate={handleCalculate} onReset={handleReset} />
           </section>
 
-          {/* ⚡ Seksi Hasil Panen / Pascapanen (SEKARANG SELALU TAMPIL) */}
+          {/* ⚡ Seksi Hasil Panen / Pascapanen */}
           <section id="pemanfaatan-hasil" className="w-full">
             <HasilEnzyme />
           </section>
@@ -71,6 +72,11 @@ export default function App() {
 
           <section id="timeline" className="w-full">
             <Timeline />
+          </section>
+
+          {/* ⚡ Seksi Edukasi & Infografis Baru */}
+          <section id="edukasi" className="w-full">
+            <EdukasiCarousel />
           </section>
 
           {/* ⚡ Oper Props activeTupoksi dan setActiveTupoksi */}

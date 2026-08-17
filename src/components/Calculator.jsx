@@ -30,12 +30,9 @@ export default function Calculator({ wasteAmount, setWasteAmount }) {
 
   return (
     <section id="kalkulator" className="w-full py-16 md:py-20 bg-slate-50 border-t border-slate-100">
-      {/* Mengubah max-w-7xl mx-auto menjadi w-full px-4 sm:px-8 md:px-12 lg:px-16 */}
+      {/* Container Responsif */}
       <div className="w-full px-4 sm:px-8 md:px-12 lg:px-16">
         <div className="text-center mb-12">
-          <span className="text-emerald-600 font-bold uppercase tracking-widest text-sm bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100">
-            Alat Ukur Akurat
-          </span>
           <h2 className="text-3xl font-extrabold text-slate-900 mt-3">Kalkulator Pintar Eco-Enzyme</h2>
           <p className="mt-4 text-slate-600 max-w-2xl mx-auto text-sm sm:text-base">
             Tidak perlu repot menghitung pembagian secara manual. Masukkan berat sampah organik yang Anda miliki, dan sistem akan langsung memecah kebutuhan resep lainnya secara instan.

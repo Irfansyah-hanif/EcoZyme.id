@@ -1,5 +1,5 @@
 import React from 'react';
-import { AlertTriangle, Info, CheckCircle2, Sprout } from 'lucide-react';
+import { AlertTriangle, Info, CheckCircle2 } from 'lucide-react';
 
 export default function Timeline() {
   return (
@@ -9,9 +9,6 @@ export default function Timeline() {
         
         {/* Header Section */}
         <div className="text-center mb-16">
-          <span className="text-emerald-600 font-bold uppercase tracking-widest text-sm bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100">
-            Panduan Teknis
-          </span>
           <h2 className="text-3xl font-extrabold text-slate-900 mt-3">Perjalanan 90 Hari Fermentasi</h2>
           <p className="mt-4 text-slate-600 max-w-2xl mx-auto text-sm sm:text-base">
             Mari kenali dinamika perubahan pada cairan wadah Anda dari bulan ke bulan agar hasil panen berkualitas tinggi.

@@ -24,9 +24,6 @@ export default function Tupoksi({ activeTupoksi, setActiveTupoksi }) {
         
         {/* Header Section */}
         <div className="text-center mb-12">
-          <span className="text-emerald-600 font-bold uppercase tracking-widest text-xs sm:text-sm bg-emerald-50 px-3.5 py-1.5 rounded-full border border-emerald-200 shadow-xs inline-block mb-3">
-            {satgasHeader.summaryTitle}
-          </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 uppercase tracking-tight max-w-4xl mx-auto leading-tight">
             {satgasHeader.title}
           </h2>
@@ -35,7 +32,7 @@ export default function Tupoksi({ activeTupoksi, setActiveTupoksi }) {
           </p>
         </div>
 
-        {/* 🌳 BAGAN STRUKTUR ORGANISASI VISUAL (FUNGSI DUAL: BAGAN & TOMBOL PENGUBAH TUPOKSI) */}
+        {/* 🌳 BAGAN STRUKTUR ORGANISASI VISUAL */}
         <div className="w-full max-w-5xl mx-auto mb-12 bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm">
           <p className="text-center text-xs font-bold text-slate-500 uppercase tracking-widest mb-8">
             Klik salah satu kotak struktur di bawah untuk melihat Uraian Tugas Pokok & Fungsi (Tupoksi)
@@ -197,15 +194,12 @@ export default function Tupoksi({ activeTupoksi, setActiveTupoksi }) {
           </div>
         </div>
 
-        {/* Panel Detail Tupoksi (Akan otomatis berganti sesuai posisi yang diklik di bagan) */}
+        {/* Panel Detail Tupoksi */}
         <div className="w-full max-w-5xl mx-auto bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm transition-all duration-300">
           
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-100 mb-6">
             <div>
-              <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full uppercase tracking-wider border border-emerald-100">
-                {currentSatgas.badge}
-              </span>
-              <h3 className="text-xl sm:text-2xl font-black text-slate-900 mt-2">
+              <h3 className="text-xl sm:text-2xl font-black text-slate-900">
                 {currentSatgas.title}
               </h3>
             </div>

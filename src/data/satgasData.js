@@ -1,5 +1,5 @@
 export const satgasHeader = {
-  title: "STRUKTUR PENGURUS PENGELOLA SAMPAH ORGANIK",
+  title: "USULAN STRUKTUR PENGURUS PENGELOLA SAMPAH ORGANIK",
   subtitle: "TIAP RW DI KELURAHAN KUTOWINANGUN KIDUL, TINGKIR, SALATIGA",
   summaryTitle: "URAIAN TUGAS POKOK FUNGSI",
   summaryDesc: "Struktur pengurus pengelola sampah organik di Kelurahan Kutowinangun Kidul"
@@ -14,7 +14,7 @@ export const satgasData = [
     tugas: [
       "Membina seluruh pengurus satgas.",
       "Menetapkan kebijakan pengelolaan sampah di tingkat RW.",
-      "Menjadi penghubung dengan Kelurahan.",
+      "Menjadi penghubung dengan Kelurahan.", 
       "Memberikan solusi terhadap permasalahan organisasi."
     ],
     tanggungJawab: [
