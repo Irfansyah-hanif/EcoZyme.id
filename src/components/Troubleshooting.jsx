@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HelpCircle, ChevronUp, ChevronDown } from 'lucide-react';
+import { HelpCircle, ChevronDown } from 'lucide-react';
 import { faqs } from '../data/ecoData';
 
 export default function Troubleshooting({ activeFaq, toggleFaq }) {
@@ -30,34 +30,44 @@ export default function Troubleshooting({ activeFaq, toggleFaq }) {
 
         {/* FAQ List Accordion */}
         <div className="w-full max-w-4xl mx-auto space-y-4">
-          {faqs && faqs.map((faq, idx) => (
-            <div 
-              key={idx} 
-              className="border border-slate-200 rounded-2xl overflow-hidden shadow-sm transition-all duration-200"
-            >
-              <button
-                type="button"
-                onClick={() => handleToggle(idx)}
-                className="w-full flex justify-between items-center px-5 py-4 bg-slate-50/70 hover:bg-slate-100/80 text-left gap-3 transition-colors cursor-pointer"
+          {faqs && faqs.map((faq, idx) => {
+            const isOpen = currentActiveFaq === idx;
+            return (
+              <div 
+                key={idx} 
+                className="border border-slate-200 rounded-2xl overflow-hidden shadow-sm transition-all duration-300"
               >
-                <span className="font-bold text-sm sm:text-base text-slate-800 flex items-center gap-2.5">
-                  <HelpCircle className="w-5 h-5 text-emerald-600 flex-shrink-0" /> 
-                  {faq.question}
-                </span>
-                {currentActiveFaq === idx ? (
-                  <ChevronUp className="w-5 h-5 text-emerald-600 flex-shrink-0" />
-                ) : (
-                  <ChevronDown className="w-5 h-5 text-slate-400 flex-shrink-0" />
-                )}
-              </button>
+                <button
+                  type="button"
+                  onClick={() => handleToggle(idx)}
+                  className="w-full flex justify-between items-center px-5 py-4 bg-slate-50/70 hover:bg-slate-100/80 text-left gap-3 transition-colors duration-300 cursor-pointer"
+                >
+                  <span className="font-bold text-sm sm:text-base text-slate-800 flex items-center gap-2.5">
+                    <HelpCircle className="w-5 h-5 text-emerald-600 flex-shrink-0" /> 
+                    {faq.question}
+                  </span>
+                  <ChevronDown 
+                    className={`w-5 h-5 text-emerald-600 flex-shrink-0 transition-transform duration-500 ease-in-out ${
+                      isOpen ? 'rotate-180 text-emerald-600' : 'text-slate-400'
+                    }`} 
+                  />
+                </button>
 
-              {currentActiveFaq === idx && (
-                <div className="px-5 py-4 bg-white border-t border-slate-100 text-slate-600 text-xs sm:text-sm leading-relaxed text-justify animate-fadeIn">
-                  {faq.answer}
+                {/* Kontainer Animasi Dropdown Halus */}
+                <div 
+                  className={`grid transition-[grid-template-rows,opacity] duration-500 ease-in-out ${
+                    isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <div className="px-5 py-4 bg-white border-t border-slate-100 text-slate-600 text-xs sm:text-sm leading-relaxed text-justify">
+                      {faq.answer}
+                    </div>
+                  </div>
                 </div>
-              )}
-            </div>
-          ))}
+              </div>
+            );
+          })}
         </div>
 
       </div>
