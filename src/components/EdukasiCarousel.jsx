@@ -83,7 +83,9 @@ export default function EdukasiCarousel() {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [isOpen]);
+
+  const currentPoster = posters[currentIndex];
 
   return (
     <section id="edukasi" className="w-full py-16 bg-white border-t border-slate-100">
@@ -106,11 +108,12 @@ export default function EdukasiCarousel() {
           <div className="flex flex-col items-center">
             <div 
               onClick={openModal}
-              className="group relative w-full max-w-2xl overflow-hidden rounded-2xl shadow-md border border-slate-200 bg-white cursor-zoom-in"
+              className="group relative w-full max-w-2xl overflow-hidden rounded-2xl shadow-md border border-slate-200 bg-white cursor-zoom-in min-h-[300px] flex items-center justify-center"
             >
               <img
-                src={posters[currentIndex].image}
-                alt={posters[currentIndex].title}
+                key={`carousel-${currentPoster.id}`}
+                src={currentPoster.image}
+                alt={currentPoster.title}
                 className="w-full h-auto object-contain max-h-[75vh] mx-auto transition-transform duration-300 group-hover:scale-102"
               />
               
@@ -123,10 +126,10 @@ export default function EdukasiCarousel() {
 
             <div className="text-center mt-6">
               <h3 className="text-lg sm:text-xl font-bold text-slate-900">
-                {posters[currentIndex].title}
+                {currentPoster.title}
               </h3>
               <p className="text-sm text-slate-600 mt-1 max-w-xl mx-auto">
-                {posters[currentIndex].desc}
+                {currentPoster.desc}
               </p>
             </div>
           </div>
@@ -179,7 +182,7 @@ export default function EdukasiCarousel() {
           {/* Toolbar Navigasi & Zoom (Atas) */}
           <div className="absolute top-4 inset-x-4 flex items-center justify-between z-10 max-w-4xl mx-auto">
             <span className="text-white text-xs sm:text-sm font-semibold bg-slate-900/80 px-3.5 py-1.5 rounded-full border border-slate-700 backdrop-blur-xs truncate max-w-[200px] sm:max-w-md">
-              {posters[currentIndex].title} ({Math.round(zoomScale * 100)}%)
+              {currentPoster.title} ({Math.round(zoomScale * 100)}%)
             </span>
 
             {/* Tombol Kontrol Zoom & Close */}
@@ -242,8 +245,9 @@ export default function EdukasiCarousel() {
           {/* Area Gambar Zoomable */}
           <div className="w-full h-full flex items-center justify-center overflow-auto p-4 pt-16">
             <img
-              src={posters[currentIndex].image}
-              alt={posters[currentIndex].title}
+              key={`modal-${currentPoster.id}`}
+              src={currentPoster.image}
+              alt={currentPoster.title}
               style={{ transform: `scale(${zoomScale})` }}
               className="max-h-[85vh] w-auto object-contain transition-transform duration-200 ease-out select-none shadow-2xl rounded-lg"
             />
