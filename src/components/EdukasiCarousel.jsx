@@ -8,8 +8,8 @@ import {
   X, 
   Maximize2 
 } from 'lucide-react';
-import posterSampah from '../assets/poster-sampah.jpg';
-import posterKesehatan from '../assets/poster-kesehatan.jpg';
+import posterSampah from '../assets/poster-sampah.JPG';
+import posterKesehatan from '../assets/poster-kesehatan.JPG';
 import posterEcoEnzyme from '../assets/poster-ecoenzyme.png';
 
 const posters = [
